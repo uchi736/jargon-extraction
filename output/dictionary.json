@@ -1,0 +1,2605 @@
+{
+  "terms": [
+    {
+      "headword": "ICH",
+      "synonyms": [
+        "医薬品規制調和国際会議"
+      ],
+      "definition": "日米EU医薬品規制調和国際会議。医薬品規制の国際的な調和を目的とする。",
+      "category": "規制"
+    },
+    {
+      "headword": "ガイドライン",
+      "synonyms": [
+        "ガイダンス",
+        "Guideline",
+        "試験ガイドライン"
+      ],
+      "definition": "医薬品の試験や評価に関する指針。承認審査資料作成の参考となる。",
+      "category": "規制"
+    },
+    {
+      "headword": "旧ガイドライン",
+      "synonyms": [],
+      "definition": "改正前の医薬品のがん原性試験に関する厚生労働省の指針。",
+      "category": "規制"
+    },
+    {
+      "headword": "新ガイドライン",
+      "synonyms": [],
+      "definition": "改正後の医薬品のがん原性試験に関する新たな指針。",
+      "category": "規制"
+    },
+    {
+      "headword": "製造販売承認申請",
+      "synonyms": [
+        "承認申請",
+        "販売承認申請"
+      ],
+      "definition": "医薬品を製造販売するために、厚生労働大臣に行う必要のある申請。",
+      "category": "申請"
+    },
+    {
+      "headword": "承認審査資料",
+      "synonyms": [
+        "審査資料"
+      ],
+      "definition": "医薬品の製造販売承認を得るために必要な試験データや書類。",
+      "category": "申請"
+    },
+    {
+      "headword": "長期がん原性試験",
+      "synonyms": [
+        "長期発がん試験",
+        "性試験"
+      ],
+      "definition": "げっ歯類を用いて長期間投与し、発がん性の有無を調べる試験。",
+      "category": "試験"
+    },
+    {
+      "headword": "短期代替発がん試験",
+      "synonyms": [],
+      "definition": "長期がん原性試験の代替として用いられる短期的な発がん性試験。",
+      "category": "試験"
+    },
+    {
+      "headword": "トランスジェニックマウス",
+      "synonyms": [
+        "rasH2-Tgマウス",
+        "クマウス",
+        "rasH2",
+        "rasH"
+      ],
+      "definition": "特定の遺伝子を導入した遺伝子改変マウス。発がん性試験に利用される。",
+      "category": "試験"
+    },
+    {
+      "headword": "Weight of Evidence",
+      "synonyms": [
+        "エビデンスの重み付け",
+        "科学的根拠の重要度",
+        "evidence",
+        "WoE",
+        "証拠の重み付け",
+        "証拠の重み付けアプローチ",
+        "WoE評価",
+        "WoE評価"
+      ],
+      "definition": "ヒトにおけるがん原性を評価するための証拠の重み付けアプローチ。",
+      "category": "評価"
+    },
+    {
+      "headword": "薬物動態学的指標",
+      "synonyms": [],
+      "definition": "薬物の体内での動き（吸収、分布、代謝、排泄）を示す指標。",
+      "category": "薬理"
+    },
+    {
+      "headword": "対面助言",
+      "synonyms": [],
+      "definition": "医薬品医療機器総合機構が、申請者に対して行う対面での相談。",
+      "category": "相談"
+    },
+    {
+      "headword": "Part2",
+      "synonyms": [],
+      "definition": "ICH ガイドライン「医薬品のがん原性を検出するための試験に関するガイダンス」補遺 Part2。",
+      "category": "規制"
+    },
+    {
+      "headword": "リスク評価",
+      "synonyms": [
+        "発がんリスク評価",
+        "リスク評",
+        "危険性評価"
+      ],
+      "definition": "医薬品のヒトにおけるがん原性を評価すること。",
+      "category": "評価"
+    },
+    {
+      "headword": "評価戦略",
+      "synonyms": [],
+      "definition": "医薬品のがん原性評価戦略。",
+      "category": "評価"
+    },
+    {
+      "headword": "プロセス",
+      "synonyms": [],
+      "definition": "ラットを用いた長期がん原性試験の実施がヒトのリスク評価に価値を付与するか否かを評価する新たなプロセス。",
+      "category": "評価"
+    },
+    {
+      "headword": "Carcinogenicity",
+      "synonyms": [
+        "発がん性"
+      ],
+      "definition": "物質ががんを引き起こす性質。試験ガイドラインで評価。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "遺伝毒性試験",
+      "synonyms": [
+        "性データ",
+        "遺伝毒性"
+      ],
+      "definition": "医薬品の遺伝毒性を評価する試験。ICH S2(R1)に基づく。",
+      "category": "毒性試験"
+    },
+    {
+      "headword": "メカニズム研究",
+      "synonyms": [
+        "メカニズム",
+        "研究",
+        "作用機序研究"
+      ],
+      "definition": "がん原性のメカニズムを細胞レベルで解明する研究。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "in vivo",
+      "synonyms": [
+        "生体内"
+      ],
+      "definition": "生体内での試験。がん原性検出のための追加試験。",
+      "category": "試験法"
+    },
+    {
+      "headword": "アプローチ",
+      "synonyms": [],
+      "definition": "問題解決への取り組み方。WoEはリスク評価のアプローチ。",
+      "category": "評価"
+    },
+    {
+      "headword": "細胞レベル",
+      "synonyms": [
+        "細胞性"
+      ],
+      "definition": "メカニズム研究において評価される変化。",
+      "category": "研究"
+    },
+    {
+      "headword": "WoE要素",
+      "synonyms": [],
+      "definition": "WoE評価で考慮すべき生物学的、薬理学的情報。",
+      "category": "評価"
+    },
+    {
+      "headword": "ペプチド",
+      "synonyms": [],
+      "definition": "内因性ペプチドおよびタンパク製剤あるいはそのアナログ。",
+      "category": "製剤"
+    },
+    {
+      "headword": "適用範囲",
+      "synonyms": [],
+      "definition": "補遺の適用範囲。",
+      "category": "ICHガイドライン"
+    },
+    {
+      "headword": "全身曝露",
+      "synonyms": [],
+      "definition": "医薬品の全身曝露。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "用量段階",
+      "synonyms": [
+        "用量設定",
+        "投与量設定"
+      ],
+      "definition": "がん原性試験における用量段階。",
+      "category": "試験"
+    },
+    {
+      "headword": "タンパク",
+      "synonyms": [
+        "アナログ",
+        "誘導体"
+      ],
+      "definition": "内因性ペプチドおよびタンパク製剤あるいはそのアナログ。",
+      "category": "製剤"
+    },
+    {
+      "headword": "腫瘍発生",
+      "synonyms": [
+        "腫瘍形成",
+        "発生率"
+      ],
+      "definition": "げっ歯類に腫瘍を発生させること。",
+      "category": "毒性"
+    },
+    {
+      "headword": "臨床使用期間",
+      "synonyms": [
+        "使用期間",
+        "臨床使用"
+      ],
+      "definition": "がん原性試験の実施が必要な医薬品の臨床使用期間。",
+      "category": "試験"
+    },
+    {
+      "headword": "試験",
+      "synonyms": [
+        "研究",
+        "Testing",
+        "Studies"
+      ],
+      "definition": "医薬品のがん原性を検出するための試験、または試験が必要とされる条件を規定。",
+      "category": "試験"
+    },
+    {
+      "headword": "必要性",
+      "synonyms": [
+        "Need"
+      ],
+      "definition": "がん原性試験の実施が必要な医薬品。",
+      "category": "試験"
+    },
+    {
+      "headword": "動物種選択",
+      "synonyms": [
+        "Selection"
+      ],
+      "definition": "動物種の選択。",
+      "category": "試験"
+    },
+    {
+      "headword": "ICHガイドライン Part2",
+      "synonyms": [
+        "Part"
+      ],
+      "definition": "ICH ガイドライン「医薬品のがん原性を検出するための試験に関するガイダンス」補遺 Part2。",
+      "category": "ICHガイドライン"
+    },
+    {
+      "headword": "リスクアセスメント",
+      "synonyms": [
+        "危険性評価"
+      ],
+      "definition": "人や環境に対するリスクを特定、分析、評価するプロセス。",
+      "category": "安全性評価"
+    },
+    {
+      "headword": "反復投与毒性試験",
+      "synonyms": [
+        "投与毒性試験",
+        "長期毒性試験",
+        "長期毒性",
+        "反復投与毒性",
+        "毒性試験",
+        "慢性毒性試験",
+        "慢性毒性"
+      ],
+      "definition": "反復投与による毒性を評価する試験。投与量と投与期間を設定。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "in vitro",
+      "synonyms": [
+        "試験管内"
+      ],
+      "definition": "生体外で行われる実験や試験。細胞や組織を用いる。",
+      "category": "実験"
+    },
+    {
+      "headword": "適用患者集団",
+      "synonyms": [
+        "患者集団",
+        "適用患者",
+        "対象患者集団"
+      ],
+      "definition": "医薬品の使用が意図される特定の患者グループ。",
+      "category": "臨床"
+    },
+    {
+      "headword": "構造活性相関",
+      "synonyms": [
+        "構造活性",
+        "活性相関"
+      ],
+      "definition": "化学物質の構造と生物活性の関係性。",
+      "category": "化学"
+    },
+    {
+      "headword": "遺伝毒性",
+      "synonyms": [],
+      "definition": "遺伝物質に損傷を与える性質。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "前がん病変",
+      "synonyms": [
+        "前がん"
+      ],
+      "definition": "がん化する可能性のある細胞や組織の変化。",
+      "category": "病理学"
+    },
+    {
+      "headword": "承認申請",
+      "synonyms": [
+        "申請前"
+      ],
+      "definition": "医薬品の製造販売承認を得るための申請。",
+      "category": "規制"
+    },
+    {
+      "headword": "がん原性試験",
+      "synonyms": [
+        "性試験",
+        "発がん性試験",
+        "長期がん"
+      ],
+      "definition": "物質のがん原性を評価する試験。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "同種同効",
+      "synonyms": [],
+      "definition": "同じ種類の効果を持つこと。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "偽陰性",
+      "synonyms": [],
+      "definition": "実際には陽性であるのに、検査結果が陰性となること。",
+      "category": "統計学"
+    },
+    {
+      "headword": "デリバリーシステム",
+      "synonyms": [
+        "DDS"
+      ],
+      "definition": "薬物を必要な部位に効率的に送達する技術。",
+      "category": "製剤学"
+    },
+    {
+      "headword": "臨床適用",
+      "synonyms": [],
+      "definition": "医薬品を実際の患者に使用すること。",
+      "category": "臨床"
+    },
+    {
+      "headword": "薬物動態",
+      "synonyms": [
+        "PK"
+      ],
+      "definition": "体内での薬物の吸収、分布、代謝、排泄の過程。",
+      "category": "薬学"
+    },
+    {
+      "headword": "生理活性物質",
+      "synonyms": [],
+      "definition": "生体内で特定の生理的な作用を示す物質。",
+      "category": "生化学"
+    },
+    {
+      "headword": "中和抗体",
+      "synonyms": [],
+      "definition": "特定の抗原の活性を中和する抗体。",
+      "category": "免疫学"
+    },
+    {
+      "headword": "補充療法",
+      "synonyms": [],
+      "definition": "不足している内因性物質を補う治療法。",
+      "category": "治療"
+    },
+    {
+      "headword": "進行がん",
+      "synonyms": [],
+      "definition": "治療が困難なほど進行した状態のがん。",
+      "category": "臨床"
+    },
+    {
+      "headword": "延命効果",
+      "synonyms": [],
+      "definition": "生命を延長させる効果。",
+      "category": "臨床"
+    },
+    {
+      "headword": "経皮投与",
+      "synonyms": [],
+      "definition": "皮膚を通して薬物を投与する方法。",
+      "category": "投与経路"
+    },
+    {
+      "headword": "経口投与",
+      "synonyms": [],
+      "definition": "口から薬物を投与する方法。",
+      "category": "投与経路"
+    },
+    {
+      "headword": "タンパク製剤",
+      "synonyms": [],
+      "definition": "タンパク質を主成分とする医薬品。",
+      "category": "製剤"
+    },
+    {
+      "headword": "ホルモン",
+      "synonyms": [],
+      "definition": "内分泌腺から分泌される生理活性物質。",
+      "category": "生化学"
+    },
+    {
+      "headword": "免疫抑制作用",
+      "synonyms": [],
+      "definition": "免疫系の機能を抑制する作用。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "臨床試験",
+      "synonyms": [],
+      "definition": "医薬品等の効果や安全性をヒトで評価する試験。",
+      "category": "臨床"
+    },
+    {
+      "headword": "患者集団",
+      "synonyms": [],
+      "definition": "特定の疾患や状態にある患者のグループ。",
+      "category": "臨床"
+    },
+    {
+      "headword": "腫瘍摘出",
+      "synonyms": [],
+      "definition": "手術によって腫瘍を取り除くこと。",
+      "category": "外科"
+    },
+    {
+      "headword": "全身濃度",
+      "synonyms": [],
+      "definition": "全身における薬物の濃度。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "局所適用",
+      "synonyms": [],
+      "definition": "特定の部位に薬剤を適用すること。",
+      "category": "投与"
+    },
+    {
+      "headword": "用量反応",
+      "synonyms": [],
+      "definition": "薬物の用量と効果の関係。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "代替治療法",
+      "synonyms": [],
+      "definition": "従来の治療法の代わりとなる治療法。",
+      "category": "治療"
+    },
+    {
+      "headword": "バイオテクノロジー応用医薬",
+      "synonyms": [],
+      "definition": "バイオテクノロジーを応用して製造された医薬品。",
+      "category": "医薬品"
+    },
+    {
+      "headword": "動物インシュリン",
+      "synonyms": [],
+      "definition": "動物由来のインスリン製剤。",
+      "category": "医薬品"
+    },
+    {
+      "headword": "カルシトニン",
+      "synonyms": [],
+      "definition": "甲状腺から分泌されるホルモン。",
+      "category": "生化学"
+    },
+    {
+      "headword": "インシュリン",
+      "synonyms": [],
+      "definition": "血糖値を下げるホルモン。",
+      "category": "生化学"
+    },
+    {
+      "headword": "下垂体由来",
+      "synonyms": [],
+      "definition": "下垂体から産生されること。",
+      "category": "解剖学"
+    },
+    {
+      "headword": "成長ホルモン",
+      "synonyms": [],
+      "definition": "成長を促進するホルモン。",
+      "category": "生化学"
+    },
+    {
+      "headword": "反復投与毒性",
+      "synonyms": [],
+      "definition": "繰り返し投与による毒性。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "投与経路",
+      "synonyms": [
+        "投与方法",
+        "臨床適用経路"
+      ],
+      "definition": "薬物を投与する方法。",
+      "category": "薬物投与"
+    },
+    {
+      "headword": "自然発生腫瘍",
+      "synonyms": [],
+      "definition": "自然に発生する腫瘍。",
+      "category": "腫瘍学"
+    },
+    {
+      "headword": "塗抹標本",
+      "synonyms": [],
+      "definition": "血液などをスライドガラスに塗って作成する標本。",
+      "category": "病理学"
+    },
+    {
+      "headword": "赤血球数",
+      "synonyms": [],
+      "definition": "血液中の赤血球の数。",
+      "category": "血液学"
+    },
+    {
+      "headword": "白血球数",
+      "synonyms": [],
+      "definition": "血液中の白血球の数。",
+      "category": "血液学"
+    },
+    {
+      "headword": "対照群",
+      "synonyms": [],
+      "definition": "試験薬を投与しない群。",
+      "category": "実験計画"
+    },
+    {
+      "headword": "病理組織",
+      "synonyms": [
+        "病理組織学的検査"
+      ],
+      "definition": "病変部位の組織。",
+      "category": "病理学"
+    },
+    {
+      "headword": "リンパ節",
+      "synonyms": [],
+      "definition": "免疫細胞が集まる組織。",
+      "category": "免疫学"
+    },
+    {
+      "headword": "被験物質",
+      "synonyms": [
+        "試験物質"
+      ],
+      "definition": "試験対象となる物質。",
+      "category": "試験"
+    },
+    {
+      "headword": "代謝",
+      "synonyms": [],
+      "definition": "生体内での化学変化。",
+      "category": "生化学"
+    },
+    {
+      "headword": "薬理作用",
+      "synonyms": [],
+      "definition": "薬物が体に及ぼす作用。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "毒性試験",
+      "synonyms": [],
+      "definition": "物質の毒性を調べる試験。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "陰性対照",
+      "synonyms": [],
+      "definition": "効果がないことが予測される対照。",
+      "category": "実験計画"
+    },
+    {
+      "headword": "投与期間",
+      "synonyms": [],
+      "definition": "薬物を投与する期間。",
+      "category": "薬物投与"
+    },
+    {
+      "headword": "試験群",
+      "synonyms": [],
+      "definition": "試験を行うグループ。",
+      "category": "実験計画"
+    },
+    {
+      "headword": "動物数",
+      "synonyms": [],
+      "definition": "実験に使用する動物の数。",
+      "category": "実験"
+    },
+    {
+      "headword": "動物種",
+      "synonyms": [],
+      "definition": "実験に使用する動物の種類。",
+      "category": "実験"
+    },
+    {
+      "headword": "MTD",
+      "synonyms": [
+        "投与可能最大量",
+        "Maximum Tolerated Dose",
+        "最大耐量"
+      ],
+      "definition": "最大耐量。投与可能な最大量。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "用量設定試験",
+      "synonyms": [],
+      "definition": "がん原性試験での用量や系統選択のために行う試験。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "代謝動態",
+      "synonyms": [
+        "薬物動態"
+      ],
+      "definition": "生体内における物質の代謝の過程。",
+      "category": "生化学"
+    },
+    {
+      "headword": "曝露量",
+      "synonyms": [
+        "暴露量",
+        "全身曝"
+      ],
+      "definition": "生物が特定の物質にさらされる量。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "臨床用量",
+      "synonyms": [
+        "臨床投与量"
+      ],
+      "definition": "実際に患者に投与される医薬品の用量。",
+      "category": "医学"
+    },
+    {
+      "headword": "標的臓器毒性",
+      "synonyms": [],
+      "definition": "特定の臓器に現れる毒性。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "代謝プロフィール",
+      "synonyms": [],
+      "definition": "特定の物質の代謝経路や代謝物の種類。",
+      "category": "生化学"
+    },
+    {
+      "headword": "毒性プロフィール",
+      "synonyms": [],
+      "definition": "特定の物質の毒性の種類や程度。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "ホメオスターシス",
+      "synonyms": [
+        "恒常性"
+      ],
+      "definition": "生体が内部環境を一定に保つ機能。",
+      "category": "生理学"
+    },
+    {
+      "headword": "発がんメカニズム",
+      "synonyms": [],
+      "definition": "細胞ががん化する過程の仕組み。",
+      "category": "生物学"
+    },
+    {
+      "headword": "臨床病理",
+      "synonyms": [],
+      "definition": "臨床医学と病理学を組み合わせた分野。",
+      "category": "医学"
+    },
+    {
+      "headword": "薬理",
+      "synonyms": [],
+      "definition": "薬物の作用や効果に関する研究。",
+      "category": "薬学"
+    },
+    {
+      "headword": "AUC",
+      "synonyms": [
+        "血中濃度時間曲線下面積",
+        "血漿濃度時間曲線下面積"
+      ],
+      "definition": "血漿中濃度とin vivoでの滞留時間を考慮した薬物動態学的指標。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "バイオアベイラビリティ",
+      "synonyms": [
+        "全身性利用率"
+      ],
+      "definition": "投与された薬物が全身循環に到達する割合。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "タンパク結合",
+      "synonyms": [
+        "パク結合"
+      ],
+      "definition": "薬物が血漿中のタンパク質と結合する現象。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "代謝様式",
+      "synonyms": [],
+      "definition": "薬物が体内でどのように変化するかのパターン。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "排泄パターン",
+      "synonyms": [],
+      "definition": "薬物が体外に排出される経路と速度。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "血中濃度",
+      "synonyms": [],
+      "definition": "血液中の薬物の濃度。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "代謝物",
+      "synonyms": [],
+      "definition": "薬物が体内で変化した後の物質。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "未変化体",
+      "synonyms": [],
+      "definition": "代謝されずに残った元の薬物。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "限界量",
+      "synonyms": [
+        "投与限界量"
+      ],
+      "definition": "超えてはならない最大投与量。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "イニシエーション",
+      "synonyms": [
+        "開始",
+        "Initiation"
+      ],
+      "definition": "発がんの初期段階。正常細胞が遺伝的変化を受け、がん化の第一歩を踏み出す。",
+      "category": "発がん"
+    },
+    {
+      "headword": "プロモーション",
+      "synonyms": [
+        "促進",
+        "Promotion"
+      ],
+      "definition": "イニシエーションされた細胞の増殖を促進し、腫瘍形成を助長する段階。",
+      "category": "発がん"
+    },
+    {
+      "headword": "段階発がんモデル",
+      "synonyms": [
+        "二段階発がんモデル"
+      ],
+      "definition": "発がんのイニシエーションとプロモーションの段階を再現する実験モデル。",
+      "category": "試験モデル"
+    },
+    {
+      "headword": "トランスジェニック",
+      "synonyms": [
+        "遺伝子導入"
+      ],
+      "definition": "外来遺伝子が導入された生物。がん研究では、特定の遺伝子変異を持つモデル動物が用いられる。",
+      "category": "遺伝学"
+    },
+    {
+      "headword": "アポトーシス",
+      "synonyms": [
+        "細胞死",
+        "プログラム細胞死"
+      ],
+      "definition": "プログラムされた細胞の自殺。がん研究では、アポトーシス誘導による治療が研究される。",
+      "category": "細胞生物学"
+    },
+    {
+      "headword": "作用メカニズム",
+      "synonyms": [
+        "作用機序"
+      ],
+      "definition": "薬物や化学物質が生物に与える影響のメカニズム。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "毒性データ",
+      "synonyms": [
+        "毒性情報"
+      ],
+      "definition": "物質の毒性に関する情報。用量反応関係、標的臓器、毒性発現のメカニズムなどを含む。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "試験データ",
+      "synonyms": [
+        "試験成績"
+      ],
+      "definition": "各種試験から得られたデータ。安全性、有効性、毒性などに関する情報を含む。",
+      "category": "試験"
+    },
+    {
+      "headword": "代謝経路",
+      "synonyms": [],
+      "definition": "生体内で物質が変換される一連の反応経路。薬物の代謝経路は、薬効や毒性に影響する。",
+      "category": "生化学"
+    },
+    {
+      "headword": "全身曝露量",
+      "synonyms": [
+        "全身曝露"
+      ],
+      "definition": "薬物が全身にどの程度行き渡るかを示す指標。AUCなどで評価される。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "細胞増殖活性",
+      "synonyms": [
+        "細胞増殖能",
+        "細胞分裂活性"
+      ],
+      "definition": "細胞が増殖する能力。がん細胞では、細胞増殖活性が亢進している。",
+      "category": "細胞生物学"
+    },
+    {
+      "headword": "細胞変異",
+      "synonyms": [
+        "細胞異型"
+      ],
+      "definition": "細胞の形態や構造が正常と異なる状態。がん細胞の特徴。",
+      "category": "病理学"
+    },
+    {
+      "headword": "組織化学",
+      "synonyms": [
+        "組織化学的検査"
+      ],
+      "definition": "組織や細胞の化学的成分を染色や反応によって検出する検査。",
+      "category": "病理学"
+    },
+    {
+      "headword": "生理状態",
+      "synonyms": [
+        "生理機能"
+      ],
+      "definition": "生物の正常な機能や状態。試験における生理状態の変化は、結果の解釈に影響する。",
+      "category": "生理学"
+    },
+    {
+      "headword": "試験計画",
+      "synonyms": [
+        "試験プロトコル"
+      ],
+      "definition": "試験の目的、方法、評価項目などを詳細に記述した計画書。",
+      "category": "試験"
+    },
+    {
+      "headword": "実施条件",
+      "synonyms": [
+        "試験条件"
+      ],
+      "definition": "試験を行う際の具体的な条件。温度、湿度、投与量、投与期間など。",
+      "category": "試験"
+    },
+    {
+      "headword": "予測困難",
+      "synonyms": [
+        "予測不能"
+      ],
+      "definition": "将来の結果や事象を予測することが難しいこと。",
+      "category": "一般"
+    },
+    {
+      "headword": "短期試験",
+      "synonyms": [
+        "短期毒性試験"
+      ],
+      "definition": "比較的短い期間で実施される毒性試験。数日から数週間程度。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "選択理由",
+      "synonyms": [
+        "選択根拠"
+      ],
+      "definition": "特定の試験法や用量などを選択した理由。科学的根拠に基づいて説明される。",
+      "category": "試験"
+    },
+    {
+      "headword": "総合評価",
+      "synonyms": [
+        "全体評価"
+      ],
+      "definition": "複数のデータや情報を総合的に判断して評価すること。",
+      "category": "評価"
+    },
+    {
+      "headword": "細胞レベルの変化",
+      "synonyms": [
+        "細胞性変化"
+      ],
+      "definition": "細胞の形態、機能、または分子組成における変化。",
+      "category": "細胞生物学"
+    },
+    {
+      "headword": "細胞間コミュニケーション",
+      "synonyms": [
+        "細胞間連絡",
+        "細胞間情報伝達",
+        "intercellular communication"
+      ],
+      "definition": "細胞同士が情報を伝達し合うプロセス。",
+      "category": "細胞生物学"
+    },
+    {
+      "headword": "ホルモン量",
+      "synonyms": [],
+      "definition": "血漿中のホルモンの濃度。",
+      "category": "内分泌学"
+    },
+    {
+      "headword": "成長因子",
+      "synonyms": [],
+      "definition": "細胞の成長や分化を促進するタンパク質。",
+      "category": "分子生物学"
+    },
+    {
+      "headword": "α2u-グロブリン",
+      "synonyms": [],
+      "definition": "特定の動物種（主に雄ラット）の尿中に見られる低分子タンパク質。",
+      "category": "生化学"
+    },
+    {
+      "headword": "代謝活性化",
+      "synonyms": [],
+      "definition": "薬物などが代謝酵素によって活性化されること。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "標的臓器",
+      "synonyms": [],
+      "definition": "毒性や薬物の影響が最も強く現れる臓器。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "DNA障害",
+      "synonyms": [],
+      "definition": "DNA分子に生じた損傷。",
+      "category": "分子生物学"
+    },
+    {
+      "headword": "修復試験",
+      "synonyms": [],
+      "definition": "DNA修復機構の能力を評価する試験。",
+      "category": "分子生物学"
+    },
+    {
+      "headword": "32P ポストラベリング法",
+      "synonyms": [
+        "ポストラベリング法"
+      ],
+      "definition": "DNA付加体を検出する分析法。",
+      "category": "分子生物学"
+    },
+    {
+      "headword": "導入遺伝子",
+      "synonyms": [
+        "導入遺伝"
+      ],
+      "definition": "細胞に導入された外来遺伝子。",
+      "category": "遺伝学"
+    },
+    {
+      "headword": "腫瘍発現機序",
+      "synonyms": [
+        "発がんメカニズム"
+      ],
+      "definition": "腫瘍が発生するメカニズム。",
+      "category": "腫瘍学"
+    },
+    {
+      "headword": "IARC",
+      "synonyms": [
+        "International Agency for Research on Cancer",
+        "国際がん研究機関"
+      ],
+      "definition": "WHOの下部組織で、発がん性に関する研究を行う機関。",
+      "category": "機関"
+    },
+    {
+      "headword": "FDA",
+      "synonyms": [
+        "米国食品医薬品局",
+        "米国FDA",
+        "Food and Drug Administration"
+      ],
+      "definition": "アメリカ合衆国の食品と医薬品の規制機関。",
+      "category": "機関"
+    },
+    {
+      "headword": "CPMP",
+      "synonyms": [
+        "Committee for Proprietary Medicinal Products"
+      ],
+      "definition": "欧州医薬品審査庁（EMA）の前身組織。",
+      "category": "機関"
+    },
+    {
+      "headword": "トキシコキネティクス",
+      "synonyms": [],
+      "definition": "毒性物質の体内動態。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "細胞変異巣",
+      "synonyms": [],
+      "definition": "形態学的に正常細胞とは異なる細胞集団。",
+      "category": "病理学"
+    },
+    {
+      "headword": "細胞変化",
+      "synonyms": [],
+      "definition": "細胞の形態や機能の変化。",
+      "category": "細胞生物学"
+    },
+    {
+      "headword": "細胞増殖",
+      "synonyms": [
+        "増殖活性"
+      ],
+      "definition": "細胞数が増加すること。",
+      "category": "細胞生物学"
+    },
+    {
+      "headword": "プロラクチン",
+      "synonyms": [],
+      "definition": "下垂体前葉から分泌されるホルモン。",
+      "category": "内分泌学"
+    },
+    {
+      "headword": "発がん",
+      "synonyms": [],
+      "definition": "正常細胞ががん細胞に変化する過程。",
+      "category": "腫瘍学"
+    },
+    {
+      "headword": "性試験",
+      "synonyms": [],
+      "definition": "がんを引き起こす可能性を評価する試験。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "試験法",
+      "synonyms": [],
+      "definition": "試験を実施するための具体的な方法。",
+      "category": "試験"
+    },
+    {
+      "headword": "業協会",
+      "synonyms": [],
+      "definition": "製薬業界の業界団体。",
+      "category": "団体"
+    },
+    {
+      "headword": "前臨床",
+      "synonyms": [],
+      "definition": "臨床試験の前の段階。",
+      "category": "医学"
+    },
+    {
+      "headword": "リスクアセスメ",
+      "synonyms": [],
+      "definition": "リスクを評価すること。",
+      "category": "評価"
+    },
+    {
+      "headword": "遺伝毒性障害",
+      "synonyms": [],
+      "definition": "遺伝物質に生じた損傷。",
+      "category": "分子生物学"
+    },
+    {
+      "headword": "組織酵素活性",
+      "synonyms": [],
+      "definition": "組織における酵素の活性度。",
+      "category": "生化学"
+    },
+    {
+      "headword": "遺伝毒性物質",
+      "synonyms": [
+        "毒性物質"
+      ],
+      "definition": "遺伝毒性を持つ物質。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "追加試験",
+      "synonyms": [],
+      "definition": "必要に応じて追加される試験。",
+      "category": "試験"
+    },
+    {
+      "headword": "発生頻度",
+      "synonyms": [],
+      "definition": "ある事象が発生する頻度。",
+      "category": "統計学"
+    },
+    {
+      "headword": "組織酵素",
+      "synonyms": [],
+      "definition": "組織に存在する酵素。",
+      "category": "生化学"
+    },
+    {
+      "headword": "検査指標",
+      "synonyms": [],
+      "definition": "検査によって測定される値。",
+      "category": "医学"
+    },
+    {
+      "headword": "生涯試験",
+      "synonyms": [],
+      "definition": "動物の生涯にわたって行う試験。",
+      "category": "試験"
+    },
+    {
+      "headword": "発現機序",
+      "synonyms": [],
+      "definition": "遺伝子が発現するメカニズム。",
+      "category": "分子生物学"
+    },
+    {
+      "headword": "毒性試験法ガイドライン",
+      "synonyms": [
+        "試験法ガイドライン",
+        "法ガイドライン",
+        "ガイドライン"
+      ],
+      "definition": "医薬品の毒性試験に関する日本の指針を示す文書。",
+      "category": "規制"
+    },
+    {
+      "headword": "細胞形質転換試験",
+      "synonyms": [
+        "Cell Transformation Assay",
+        "形質転換試験",
+        "細胞形質転換",
+        "転換試験"
+      ],
+      "definition": "細胞の癌化能を評価する試験方法。",
+      "category": "試験"
+    },
+    {
+      "headword": "用量反応関係",
+      "synonyms": [
+        "反応関係",
+        "用量反応"
+      ],
+      "definition": "投与量と生体反応の相関関係。",
+      "category": "薬理"
+    },
+    {
+      "headword": "ラット",
+      "synonyms": [],
+      "definition": "がん原性試験で一般的に使用されるげっ歯類。",
+      "category": "動物種"
+    },
+    {
+      "headword": "薬理活性",
+      "synonyms": [
+        "薬理"
+      ],
+      "definition": "薬物が示す生物活性。",
+      "category": "薬理"
+    },
+    {
+      "headword": "アイソザイム",
+      "synonyms": [],
+      "definition": "同じ酵素活性を持つが異なる分子構造を持つ酵素。",
+      "category": "生化学"
+    },
+    {
+      "headword": "肝腫瘍",
+      "synonyms": [],
+      "definition": "肝臓に発生する腫瘍。",
+      "category": "病理"
+    },
+    {
+      "headword": "がん原性",
+      "synonyms": [],
+      "definition": "癌を引き起こす性質。",
+      "category": "毒性"
+    },
+    {
+      "headword": "投与量",
+      "synonyms": [],
+      "definition": "投与する薬物の量。",
+      "category": "投与"
+    },
+    {
+      "headword": "マウス",
+      "synonyms": [],
+      "definition": "実験動物として用いられる小型のげっ歯類。",
+      "category": "動物種"
+    },
+    {
+      "headword": "細胞形質",
+      "synonyms": [],
+      "definition": "細胞の形態と機能。",
+      "category": "生物学"
+    },
+    {
+      "headword": "適用期間",
+      "synonyms": [],
+      "definition": "医薬品の使用が推奨される期間。",
+      "category": "医薬品"
+    },
+    {
+      "headword": "薬物代謝",
+      "synonyms": [],
+      "definition": "薬物が体内で化学的に変化する過程。",
+      "category": "薬理"
+    },
+    {
+      "headword": "管理規則",
+      "synonyms": [
+        "製品管理"
+      ],
+      "definition": "製品を管理するための規則。",
+      "category": "規制"
+    },
+    {
+      "headword": "毒性物質",
+      "synonyms": [],
+      "definition": "生物に対して有害な影響を与える物質。",
+      "category": "毒性"
+    },
+    {
+      "headword": "腫瘍発生率",
+      "synonyms": [],
+      "definition": "一定期間内に腫瘍が発生する割合。",
+      "category": "病理"
+    },
+    {
+      "headword": "発がんリスク",
+      "synonyms": [
+        "発がんリ",
+        "ヒト発がんリ",
+        "ヒト発がんリスク",
+        "リスク"
+      ],
+      "definition": "癌が発生する可能性。",
+      "category": "リスク"
+    },
+    {
+      "headword": "データベース",
+      "synonyms": [],
+      "definition": "体系的に整理されたデータの集合。",
+      "category": "情報"
+    },
+    {
+      "headword": "シンポジウム",
+      "synonyms": [],
+      "definition": "特定のテーマについて意見交換を行う会議。",
+      "category": "イベント"
+    },
+    {
+      "headword": "ワークショップ",
+      "synonyms": [],
+      "definition": "参加者が共同で作業や学習を行う集まり。",
+      "category": "イベント"
+    },
+    {
+      "headword": "事例",
+      "synonyms": [],
+      "definition": "過去に発生した具体的な出来事。",
+      "category": "情報"
+    },
+    {
+      "headword": "組織特異",
+      "synonyms": [],
+      "definition": "特定の組織に特有な性質。",
+      "category": "生物学"
+    },
+    {
+      "headword": "製品管理規則",
+      "synonyms": [
+        "Medicinal Products in the European Committee",
+        "Rules Governing Medicinal Products in the European Committee"
+      ],
+      "definition": "EUにおける医薬品管理に関する規則。",
+      "category": "規制"
+    },
+    {
+      "headword": "文献引用",
+      "synonyms": [],
+      "definition": "文献から情報を引用すること。",
+      "category": "研究"
+    },
+    {
+      "headword": "Cell Transformation",
+      "synonyms": [],
+      "definition": "細胞が癌細胞のような性質を獲得する現象。",
+      "category": "生物学"
+    },
+    {
+      "headword": "Assay",
+      "synonyms": [],
+      "definition": "物質の特性や活性を評価する試験。",
+      "category": "試験"
+    },
+    {
+      "headword": "モデル",
+      "synonyms": [],
+      "definition": "ある現象を模倣した表現。",
+      "category": "研究"
+    },
+    {
+      "headword": "日米欧",
+      "synonyms": [],
+      "definition": "日本、米国、欧州。",
+      "category": "地域"
+    },
+    {
+      "headword": "レセプター",
+      "synonyms": [],
+      "definition": "細胞表面や細胞内に存在し、特定の分子と結合するタンパク質。",
+      "category": "生化学"
+    },
+    {
+      "headword": "屠殺解剖",
+      "synonyms": [],
+      "definition": "屠殺後に解剖を行うこと。",
+      "category": "獣医学"
+    },
+    {
+      "headword": "累積死亡率",
+      "synonyms": [],
+      "definition": "一定期間における死亡の累積割合。",
+      "category": "統計学"
+    },
+    {
+      "headword": "強制投与",
+      "synonyms": [],
+      "definition": "動物に強制的に物質を投与する方法。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "摂餌量",
+      "synonyms": [],
+      "definition": "動物が摂取する餌の量。",
+      "category": "栄養学"
+    },
+    {
+      "headword": "飲水量",
+      "synonyms": [],
+      "definition": "動物が摂取する水の量。",
+      "category": "生理学"
+    },
+    {
+      "headword": "器官重量測定",
+      "synonyms": [],
+      "definition": "器官の重量を測定すること。",
+      "category": "生理学"
+    },
+    {
+      "headword": "衰弱動物",
+      "synonyms": [],
+      "definition": "体力が著しく低下した動物。",
+      "category": "獣医学"
+    },
+    {
+      "headword": "体重増加抑制",
+      "synonyms": [],
+      "definition": "試験群の体重増加が対照群と比較して抑制されること。がん原性試験における毒性評価の指標。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "一般状態",
+      "synonyms": [],
+      "definition": "動物の活動性、外観、自発運動、呼吸状態など、総合的な健康状態。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "検査所見",
+      "synonyms": [],
+      "definition": "臨床検査（血液検査、尿検査など）で得られた結果。毒性評価の指標となる。",
+      "category": "臨床検査"
+    },
+    {
+      "headword": "毒性指標",
+      "synonyms": [],
+      "definition": "毒性の程度を示す指標。体重変化、死亡率、病理組織学的変化などが含まれる。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "代謝データ",
+      "synonyms": [],
+      "definition": "薬物の代謝に関する情報。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "血漿濃度",
+      "synonyms": [],
+      "definition": "血漿中の薬物の濃度。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "陽性所見",
+      "synonyms": [
+        "陽性"
+      ],
+      "definition": "試験において、目的とする効果や反応が認められること。",
+      "category": "試験評価"
+    },
+    {
+      "headword": "MRD",
+      "synonyms": [
+        "臨床最大1日量",
+        "Maximum Daily Recommended Dose"
+      ],
+      "definition": "臨床試験で用いられる1日あたりの最大推奨投与量。",
+      "category": "薬学"
+    },
+    {
+      "headword": "AUC比",
+      "synonyms": [
+        "相対的全身曝露比"
+      ],
+      "definition": "動物とヒトのAUCの比率。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "体表面積",
+      "synonyms": [],
+      "definition": "体の表面積の大きさ。",
+      "category": "生物学"
+    },
+    {
+      "headword": "mg/m2",
+      "synonyms": [
+        "mg/m"
+      ],
+      "definition": "体表面積あたりの薬物投与量を示す単位。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "結合フラクション",
+      "synonyms": [
+        "フラクション"
+      ],
+      "definition": "薬物とタンパク質の結合割合。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "p53",
+      "synonyms": [],
+      "definition": "腫瘍抑制遺伝子。",
+      "category": "遺伝学"
+    },
+    {
+      "headword": "臨床曝露量",
+      "synonyms": [
+        "臨床曝露"
+      ],
+      "definition": "臨床試験または治療において患者がさらされる薬物の量。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "モニタリング",
+      "synonyms": [],
+      "definition": "継続的な観察と記録。",
+      "category": null
+    },
+    {
+      "headword": "基準",
+      "synonyms": [],
+      "definition": "判断や評価の標準となるもの。",
+      "category": null
+    },
+    {
+      "headword": "データ",
+      "synonyms": [],
+      "definition": "観察や測定によって得られた情報。",
+      "category": null
+    },
+    {
+      "headword": "試験成績",
+      "synonyms": [],
+      "definition": "試験によって得られた結果。",
+      "category": null
+    },
+    {
+      "headword": "動物愛護",
+      "synonyms": [],
+      "definition": "動物の福祉を尊重する考え方。",
+      "category": null
+    },
+    {
+      "headword": "受容体",
+      "synonyms": [],
+      "definition": "特定の分子と結合する細胞表面の構造。",
+      "category": "生化学"
+    },
+    {
+      "headword": "Pharmaceuticals",
+      "synonyms": [
+        "製剤",
+        "薬剤",
+        "医薬品"
+      ],
+      "definition": "疾病の治療や予防に用いられる化学物質。",
+      "category": "医薬品"
+    },
+    {
+      "headword": "Genotoxicity",
+      "synonyms": [
+        "遺伝毒性"
+      ],
+      "definition": "遺伝物質に損傷を与える性質。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "Preclinical",
+      "synonyms": [
+        "前臨床"
+      ],
+      "definition": "臨床試験前の段階。動物実験などを含む。",
+      "category": "医薬品開発"
+    },
+    {
+      "headword": "評価",
+      "synonyms": [
+        "Evaluation"
+      ],
+      "definition": "試験結果やデータを分析し判断すること。",
+      "category": "評価"
+    },
+    {
+      "headword": "ガイダンス",
+      "synonyms": [
+        "Guidance"
+      ],
+      "definition": "助言や指導を与えること。",
+      "category": "規制"
+    },
+    {
+      "headword": "全身性",
+      "synonyms": [
+        "Systemic"
+      ],
+      "definition": "全身に影響を及ぼすこと。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "Exposure",
+      "synonyms": [
+        "曝露"
+      ],
+      "definition": "有害物質にさらされること。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "Toxicity",
+      "synonyms": [
+        "毒性"
+      ],
+      "definition": "物質が生物に有害な影響を与える性質。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "Addendum",
+      "synonyms": [
+        "補遺"
+      ],
+      "definition": "文書に追加される情報や修正。",
+      "category": "規制"
+    },
+    {
+      "headword": "Safety",
+      "synonyms": [
+        "安全性"
+      ],
+      "definition": "有害な影響がないこと。",
+      "category": "安全性評価"
+    },
+    {
+      "headword": "メカニズム",
+      "synonyms": [],
+      "definition": "特定の作用や現象が起こる仕組み。",
+      "category": "研究"
+    },
+    {
+      "headword": "動物モデル",
+      "synonyms": [],
+      "definition": "ヒトの疾患を模倣した動物。",
+      "category": "実験"
+    },
+    {
+      "headword": "Dose",
+      "synonyms": [
+        "投与量"
+      ],
+      "definition": "投与する物質の量。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "S1A",
+      "synonyms": [],
+      "definition": "ICH がん原性試験ガイドライン。",
+      "category": "規制"
+    },
+    {
+      "headword": "S1B",
+      "synonyms": [],
+      "definition": "ICH がん原性試験ガイドライン。",
+      "category": "規制"
+    },
+    {
+      "headword": "S1C",
+      "synonyms": [],
+      "definition": "ICH がん原性試験ガイドライン。",
+      "category": "規制"
+    },
+    {
+      "headword": "WoE",
+      "synonyms": [
+        "Weight of Evidence",
+        "WoE文書",
+        "weight of evidence",
+        "証拠の重み付け"
+      ],
+      "definition": "利用可能な証拠の信頼性と妥当性を評価。",
+      "category": "評価"
+    },
+    {
+      "headword": "プロモーター作用",
+      "synonyms": [],
+      "definition": "発がんを促進する作用。",
+      "category": "がん研究"
+    },
+    {
+      "headword": "評価プロセス",
+      "synonyms": [],
+      "definition": "評価を行う一連の手順。",
+      "category": "評価"
+    },
+    {
+      "headword": "ヒト発がんリスク評価",
+      "synonyms": [
+        "ヒト発がんリスク",
+        "発がんリスク評価",
+        "発がんリスク"
+      ],
+      "definition": "医薬品の投与によるヒトにおける発がんの可能性を評価するプロセス。",
+      "category": "安全性評価"
+    },
+    {
+      "headword": "rasH2-Tg マウス",
+      "synonyms": [
+        "TgHras2 トランスジェニックマウス",
+        "rasH2-Tgマウス"
+      ],
+      "definition": "発がん性試験に用いられるトランスジェニックマウスの一種。",
+      "category": "毒性試験"
+    },
+    {
+      "headword": "年間ラット試験",
+      "synonyms": [
+        "2年間ラットがん原性試験"
+      ],
+      "definition": "医薬品の長期毒性・発がん性を評価するための試験。",
+      "category": "毒性試験"
+    },
+    {
+      "headword": "曝露量比",
+      "synonyms": [],
+      "definition": "動物とヒトにおける薬物曝露量の比率。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "高用量選択",
+      "synonyms": [],
+      "definition": "毒性試験における高用量を設定する基準。",
+      "category": "毒性試験"
+    },
+    {
+      "headword": "作用機序",
+      "synonyms": [],
+      "definition": "薬物が生物体に作用するメカニズム。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "後ろ向き解析",
+      "synonyms": [],
+      "definition": "過去のデータを分析して傾向や関連性を明らかにする手法。",
+      "category": "データ解析"
+    },
+    {
+      "headword": "実験動物中央研究所",
+      "synonyms": [
+        "実験動物中央研究"
+      ],
+      "definition": "実験動物の研究・開発を行う研究機関。",
+      "category": "研究機関"
+    },
+    {
+      "headword": "エンドポイント",
+      "synonyms": [],
+      "definition": "試験において評価される測定項目。",
+      "category": "試験"
+    },
+    {
+      "headword": "病理組織学的データ",
+      "synonyms": [],
+      "definition": "組織の顕微鏡観察によるデータ。",
+      "category": "毒性試験"
+    },
+    {
+      "headword": "薬物標的",
+      "synonyms": [],
+      "definition": "薬物が作用する生体内の分子。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "発がん性",
+      "synonyms": [],
+      "definition": "がんを引き起こす性質。",
+      "category": "毒性"
+    },
+    {
+      "headword": "DRA",
+      "synonyms": [
+        "医薬品規制当局",
+        "Drug Regulatory Agency"
+      ],
+      "definition": "医薬品を規制する行政機関。",
+      "category": "規制"
+    },
+    {
+      "headword": "オフターゲット作用",
+      "synonyms": [
+        "副次的薬理作用",
+        "オフターゲット"
+      ],
+      "definition": "意図しない標的に対する薬物の作用。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "クラス効果",
+      "synonyms": [],
+      "definition": "特定の薬物クラスに共通する効果。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "免疫毒性試験",
+      "synonyms": [
+        "免疫毒性"
+      ],
+      "definition": "免疫系への毒性影響を評価する試験。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "ホルモン変動",
+      "synonyms": [
+        "ホルモン"
+      ],
+      "definition": "ホルモン濃度の変化。",
+      "category": "内分泌学"
+    },
+    {
+      "headword": "ラット試験",
+      "synonyms": [
+        "ラット毒性",
+        "ラット毒性試験"
+      ],
+      "definition": "ラットを用いて行う試験。",
+      "category": "試験"
+    },
+    {
+      "headword": "マウス試験",
+      "synonyms": [
+        "マウスがん"
+      ],
+      "definition": "マウスを用いて行う試験。",
+      "category": "試験"
+    },
+    {
+      "headword": "内分泌器官",
+      "synonyms": [
+        "分泌器官",
+        "分泌組織",
+        "生殖器官",
+        "生殖組織"
+      ],
+      "definition": "ホルモンを分泌する器官。",
+      "category": "解剖学"
+    },
+    {
+      "headword": "免疫調節",
+      "synonyms": [],
+      "definition": "免疫系のバランスを調整すること。",
+      "category": "免疫学"
+    },
+    {
+      "headword": "血漿曝露",
+      "synonyms": [
+        "血漿曝露マージン"
+      ],
+      "definition": "血漿中の薬物濃度。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "核内受容体",
+      "synonyms": [
+        "受容体"
+      ],
+      "definition": "細胞核内に存在する受容体。",
+      "category": "分子生物学"
+    },
+    {
+      "headword": "バイオマーカー",
+      "synonyms": [
+        "分子バイオマーカー",
+        "分子バイオ"
+      ],
+      "definition": "生体内の状態を示す指標。",
+      "category": "生物学"
+    },
+    {
+      "headword": "トランスジェニックモデル",
+      "synonyms": [
+        "トランスジェニックマウスモデル"
+      ],
+      "definition": "遺伝子操作により特定の遺伝子が導入された動物モデル。",
+      "category": "毒性試験"
+    },
+    {
+      "headword": "用量選択基準",
+      "synonyms": [
+        "用量設定基準"
+      ],
+      "definition": "毒性試験における用量を決定するための基準。",
+      "category": "毒性試験"
+    },
+    {
+      "headword": "First-in-class",
+      "synonyms": [],
+      "definition": "新しい作用機序を持つ最初の薬剤。",
+      "category": "医薬品"
+    },
+    {
+      "headword": "血漿曝露比",
+      "synonyms": [],
+      "definition": "げっ歯類とヒトにおける血漿中の薬物曝露量の比率。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "S1C(R2)",
+      "synonyms": [],
+      "definition": "ICH がん原性試験ガイドラインの一部。",
+      "category": "規制"
+    },
+    {
+      "headword": "用量選択",
+      "synonyms": [],
+      "definition": "毒性試験における高用量設定の基準。",
+      "category": "毒性試験"
+    },
+    {
+      "headword": "後ろ向き評価",
+      "synonyms": [],
+      "definition": "過去に得られたデータを用いて行う評価。",
+      "category": "評価"
+    },
+    {
+      "headword": "腫瘍",
+      "synonyms": [],
+      "definition": "異常な細胞増殖によって形成された組織。",
+      "category": "病理"
+    },
+    {
+      "headword": "曝露比",
+      "synonyms": [],
+      "definition": "異なる生物種間での薬物曝露量の比率。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "Risk assessment",
+      "synonyms": [
+        "リスク評価"
+      ],
+      "definition": "リスクを特定し、評価するプロセス。",
+      "category": "安全性評価"
+    },
+    {
+      "headword": "Carcinogenesis",
+      "synonyms": [
+        "がん原性",
+        "発がん"
+      ],
+      "definition": "正常細胞ががん細胞に変化する過程。",
+      "category": "生物学"
+    },
+    {
+      "headword": "医薬品",
+      "synonyms": [
+        "Pharmaceutical"
+      ],
+      "definition": "病気の治療や予防に使用される物質。",
+      "category": "医薬品"
+    },
+    {
+      "headword": "発がん性",
+      "synonyms": [
+        "Carcinogenic"
+      ],
+      "definition": "がんを引き起こす可能性のある物質。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "毒性学",
+      "synonyms": [
+        "Toxicology"
+      ],
+      "definition": "有害物質の生体への影響を研究する学問。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "トランスジェニック",
+      "synonyms": [
+        "Transgenic"
+      ],
+      "definition": "遺伝子組換えにより外来遺伝子を導入された生物。",
+      "category": "生物学"
+    },
+    {
+      "headword": "規制",
+      "synonyms": [
+        "Regulatory",
+        "規制の"
+      ],
+      "definition": "規則や基準を定めること、またはそれらに関する。",
+      "category": "規制科学"
+    },
+    {
+      "headword": "予測",
+      "synonyms": [
+        "Prediction"
+      ],
+      "definition": "将来の事象や結果を予測すること。",
+      "category": null
+    },
+    {
+      "headword": "可能性",
+      "synonyms": [
+        "Potential"
+      ],
+      "definition": "何かが起こりうる、または発達しうる能力。",
+      "category": null
+    },
+    {
+      "headword": "反復投与毒性",
+      "synonyms": [
+        "Repeated dose toxicity"
+      ],
+      "definition": "一定期間にわたり反復投与された物質の毒性。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "試験",
+      "synonyms": [
+        "Study",
+        "研究"
+      ],
+      "definition": "特定のテーマに関する調査や分析。",
+      "category": null
+    },
+    {
+      "headword": "げっ歯類",
+      "synonyms": [
+        "Rodent"
+      ],
+      "definition": "ネズミ、ラットなどの哺乳動物のグループ。",
+      "category": "動物学"
+    },
+    {
+      "headword": "outcome",
+      "synonyms": [
+        "転帰",
+        "アウトカム"
+      ],
+      "definition": "特定のプロセスや試験の結果。",
+      "category": null
+    },
+    {
+      "headword": "analysis",
+      "synonyms": [
+        "解析"
+      ],
+      "definition": "詳細な調査と評価。",
+      "category": null
+    },
+    {
+      "headword": "chronic",
+      "synonyms": [
+        "慢性"
+      ],
+      "definition": "長期間にわたる、または頻繁に繰り返される状態。",
+      "category": "医学"
+    },
+    {
+      "headword": "guidelines",
+      "synonyms": [
+        "ガイドライン"
+      ],
+      "definition": "推奨される手順や行動のセット。",
+      "category": null
+    },
+    {
+      "headword": "properties",
+      "synonyms": [
+        "特性"
+      ],
+      "definition": "物質またはシステムの固有の属性。",
+      "category": null
+    },
+    {
+      "headword": "transgenes",
+      "synonyms": [
+        "導入遺伝子"
+      ],
+      "definition": "遺伝子組み換えによって生物に導入された遺伝子。",
+      "category": "遺伝学"
+    },
+    {
+      "headword": "activated",
+      "synonyms": [
+        "活性化"
+      ],
+      "definition": "機能が開始または増加した状態。",
+      "category": "生物学"
+    },
+    {
+      "headword": "medicinal products",
+      "synonyms": [
+        "医薬品"
+      ],
+      "definition": "病気の治療や予防に使用される製品。",
+      "category": "医薬品"
+    },
+    {
+      "headword": "pharmacol",
+      "synonyms": [
+        "薬理学"
+      ],
+      "definition": "薬物の作用と効果を研究する学問。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "Oncogene",
+      "synonyms": [
+        "癌遺伝子"
+      ],
+      "definition": "細胞の成長と分裂を促進する遺伝子。",
+      "category": "遺伝学"
+    },
+    {
+      "headword": "European",
+      "synonyms": [
+        "欧州"
+      ],
+      "definition": "ヨーロッパに関する。",
+      "category": null
+    },
+    {
+      "headword": "procedure",
+      "synonyms": [
+        "手順"
+      ],
+      "definition": "特定のタスクを実行するための一連のアクション。",
+      "category": null
+    },
+    {
+      "headword": "Frontiers",
+      "synonyms": [
+        "フロンティア"
+      ],
+      "definition": "科学研究の最前線。",
+      "category": null
+    },
+    {
+      "headword": "Pathol",
+      "synonyms": [
+        "病理学"
+      ],
+      "definition": "病気の性質と原因を研究する学問。",
+      "category": "医学"
+    },
+    {
+      "headword": "Crit",
+      "synonyms": [
+        "クリティカル"
+      ],
+      "definition": "重要な分析または評価。",
+      "category": null
+    },
+    {
+      "headword": "AEMF",
+      "synonyms": [
+        "曝露量"
+      ],
+      "definition": "薬物または化学物質への曝露量。",
+      "category": "薬物動態"
+    },
+    {
+      "headword": "Sistare",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Alden",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Morton",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Kasper",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "DeLuca",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Jonghe",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Keller",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Jacobs",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Schmidt",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Olejniczak",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Hilgenfeld",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Christensen",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Wollenberg",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Buitenhuis",
+      "synonyms": [],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Wagenaar",
+      "synonyms": [
+        "ワゲナール",
+        "Bourdeau",
+        "ブルドー",
+        "Kadambi",
+        "カダンビ",
+        "Soffers",
+        "ソファーズ",
+        "Someren",
+        "ソメレン",
+        "Pasanen",
+        "パサネン",
+        "Jones",
+        "ジョーンズ",
+        "Reddy",
+        "レディ",
+        "Izawa",
+        "伊澤",
+        "Nomura",
+        "野村",
+        "DeGeorge",
+        "デジョージ",
+        "Yokoyama",
+        "横山",
+        "Takahashi",
+        "高橋",
+        "Friedrich",
+        "フリードリヒ",
+        "Kimura",
+        "木村",
+        "Saitoh",
+        "斎藤"
+      ],
+      "definition": "人名",
+      "category": null
+    },
+    {
+      "headword": "Pharmacological properties",
+      "synonyms": [
+        "薬理学的特性"
+      ],
+      "definition": "薬物が生物体に及ぼす作用と、そのメカニズム。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "Tumorigenic",
+      "synonyms": [
+        "腫瘍形成性"
+      ],
+      "definition": "腫瘍を発生させる性質。",
+      "category": "病理学"
+    },
+    {
+      "headword": "Hypothesis",
+      "synonyms": [
+        "仮説"
+      ],
+      "definition": "未検証の説明や提案。",
+      "category": null
+    },
+    {
+      "headword": "Medicine",
+      "synonyms": [
+        "医学"
+      ],
+      "definition": "病気の予防や治療に関する学問。",
+      "category": null
+    },
+    {
+      "headword": "Assays",
+      "synonyms": [
+        "分析",
+        "試験"
+      ],
+      "definition": "特定の物質の量や活性を測定する試験。",
+      "category": "分析化学"
+    },
+    {
+      "headword": "Paradigm",
+      "synonyms": [
+        "パラダイム"
+      ],
+      "definition": "ある分野における支配的な考え方や枠組み。",
+      "category": null
+    },
+    {
+      "headword": "Immunosuppressive",
+      "synonyms": [
+        "免疫抑制性の"
+      ],
+      "definition": "免疫機能を抑制する性質。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "事例研究",
+      "synonyms": [],
+      "definition": "特定の事例について詳細に分析・検討すること。",
+      "category": "研究"
+    },
+    {
+      "headword": "HESI",
+      "synonyms": [],
+      "definition": "科学的知見に基づき健康と環境リスクを評価する非営利団体。",
+      "category": "安全性評価"
+    },
+    {
+      "headword": "immunomodulators",
+      "synonyms": [],
+      "definition": "免疫系を調節する物質。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "neoplasia",
+      "synonyms": [],
+      "definition": "新生物。細胞の異常な増殖によって形成される組織。",
+      "category": "病理学"
+    },
+    {
+      "headword": "Toxicol",
+      "synonyms": [],
+      "definition": "毒性学に関する学術雑誌。",
+      "category": "文献"
+    },
+    {
+      "headword": "免疫毒性",
+      "synonyms": [],
+      "definition": "免疫系に対する有害な影響。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "ホルモン作用",
+      "synonyms": [],
+      "definition": "ホルモンに関連する作用。",
+      "category": "内分泌学"
+    },
+    {
+      "headword": "曝露マージン",
+      "synonyms": [],
+      "definition": "曝露量と安全量との間の幅。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "細胞経路",
+      "synonyms": [],
+      "definition": "細胞内の分子が相互作用する経路。",
+      "category": "分子生物学"
+    },
+    {
+      "headword": "発症機序",
+      "synonyms": [],
+      "definition": "疾患が発生するメカニズム。",
+      "category": "病理学"
+    },
+    {
+      "headword": "細胞肥大",
+      "synonyms": [],
+      "definition": "細胞のサイズが異常に大きくなること。",
+      "category": "病理学"
+    },
+    {
+      "headword": "アンタゴニスト",
+      "synonyms": [],
+      "definition": "受容体の活性を阻害する物質。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "オンターゲット",
+      "synonyms": [],
+      "definition": "意図した標的に対する作用。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "ウイルス複製",
+      "synonyms": [],
+      "definition": "ウイルスが増殖する過程。",
+      "category": "ウイルス学"
+    },
+    {
+      "headword": "肝細胞肥大",
+      "synonyms": [],
+      "definition": "肝細胞のサイズが異常に大きくなること。",
+      "category": "病理学"
+    },
+    {
+      "headword": "好中球浸潤",
+      "synonyms": [],
+      "definition": "好中球が組織に浸潤すること。",
+      "category": "病理学"
+    },
+    {
+      "headword": "副腎皮質刺激ホルモン",
+      "synonyms": [
+        "ACTH"
+      ],
+      "definition": "下垂体前葉から分泌されるホルモンで、副腎皮質の機能を刺激する。",
+      "category": "内分泌学"
+    },
+    {
+      "headword": "CYP1A2",
+      "synonyms": [],
+      "definition": "薬物代謝酵素であるチトクロムP450の分子種の一つ。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "CYP3A1",
+      "synonyms": [],
+      "definition": "薬物代謝酵素であるチトクロムP450の分子種の一つ。",
+      "category": "薬物動態学"
+    },
+    {
+      "headword": "ヒト曝露量",
+      "synonyms": [],
+      "definition": "ヒトが特定の化学物質や薬物に曝露される量。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "細胞アポトーシス",
+      "synonyms": [
+        "アポトーシス"
+      ],
+      "definition": "プログラムされた細胞死。",
+      "category": "細胞生物学"
+    },
+    {
+      "headword": "リンパ球サブセット",
+      "synonyms": [],
+      "definition": "リンパ球の種類。",
+      "category": "免疫学"
+    },
+    {
+      "headword": "甲状腺刺激ホルモン",
+      "synonyms": [
+        "甲状腺刺激"
+      ],
+      "definition": "下垂体前葉から分泌され、甲状腺の機能を刺激するホルモン。",
+      "category": "内分泌学"
+    },
+    {
+      "headword": "甲状腺濾胞肥大",
+      "synonyms": [
+        "濾胞肥大"
+      ],
+      "definition": "甲状腺の濾胞細胞が肥大した状態。",
+      "category": "病理学"
+    },
+    {
+      "headword": "受容体発現",
+      "synonyms": [],
+      "definition": "細胞表面または細胞内に受容体が存在すること。",
+      "category": "分子生物学"
+    },
+    {
+      "headword": "受容体活性",
+      "synonyms": [],
+      "definition": "受容体がリガンドと結合し、シグナル伝達を開始すること。",
+      "category": "分子生物学"
+    },
+    {
+      "headword": "神経細胞",
+      "synonyms": [],
+      "definition": "神経系を構成する細胞。",
+      "category": "神経科学"
+    },
+    {
+      "headword": "臨床最大用量",
+      "synonyms": [
+        "最大用量"
+      ],
+      "definition": "臨床試験で使用される最大の投与量。",
+      "category": "薬理学"
+    },
+    {
+      "headword": "視床下部",
+      "synonyms": [],
+      "definition": "脳の一部で、内分泌機能や自律神経機能を調節する。",
+      "category": "神経科学"
+    },
+    {
+      "headword": "甲状腺濾胞細胞",
+      "synonyms": [
+        "濾胞細胞"
+      ],
+      "definition": "甲状腺の濾胞を構成する細胞。",
+      "category": "組織学"
+    },
+    {
+      "headword": "ゴナドトロピン",
+      "synonyms": [
+        "性腺刺激ホルモン"
+      ],
+      "definition": "性腺を刺激するホルモン。",
+      "category": "内分泌学"
+    },
+    {
+      "headword": "酸化ストレス",
+      "synonyms": [],
+      "definition": "酸化と抗酸化のバランスが崩れた状態。",
+      "category": "毒性学"
+    },
+    {
+      "headword": "ナチュラルキラー細胞",
+      "synonyms": [
+        "NK細胞"
+      ],
+      "definition": "自然免疫に関わる細胞傷害性リンパ球。",
+      "category": "免疫学"
+    },
+    {
+      "headword": "T細胞依存性抗原反応",
+      "synonyms": [],
+      "definition": "T細胞の助けを借りて起こる抗原に対する免疫反応。",
+      "category": "免疫学"
+    },
+    {
+      "headword": "CYP1A",
+      "synonyms": [
+        "CYP1A2"
+      ],
+      "definition": "薬物代謝酵素チトクロムP450のファミリー。",
+      "category": "薬物代謝"
+    },
+    {
+      "headword": "CYP3A",
+      "synonyms": [
+        "CYP3A1"
+      ],
+      "definition": "薬物代謝酵素チトクロムP450のファミリー。",
+      "category": "薬物代謝"
+    },
+    {
+      "headword": "CYP2B",
+      "synonyms": [],
+      "definition": "薬物代謝酵素チトクロムP450のファミリー。",
+      "category": "薬物代謝"
+    },
+    {
+      "headword": "ノックアウトマウス",
+      "synonyms": [],
+      "definition": "特定の遺伝子が欠損したマウス。",
+      "category": "遺伝学"
+    },
+    {
+      "headword": "ヒト曝露マージン",
+      "synonyms": [],
+      "definition": "ヒト曝露量に対する安全域。",
+      "category": "毒性学"
+    }
+  ]
+}

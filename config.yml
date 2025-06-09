@@ -1,0 +1,20 @@
+llm:
+  provider: google
+  model: gemini-2.0-flash
+  max_tokens: 2048
+  temperature: 0.3
+
+embedding:
+  model: models/text-embedding-004
+  dim: 1536
+  batch_size: 256
+
+storage:
+  driver: "postgresql"
+  # AWS RDSの接続情報を反映したDSN
+  dsn: "postgresql://postgres:5nV7FsW4@database-1.ct88qcm40ffp.ap-northeast-1.rds.amazonaws.com:5432/postgres"
+  use_pgvector: true
+
+filters:
+  min_freq: 2
+  max_len: 5

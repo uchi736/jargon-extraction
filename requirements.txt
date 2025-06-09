@@ -1,0 +1,51 @@
+﻿# ===========================
+# MeCab不要の軽量版requirements
+# ===========================
+
+# Core
+python-dotenv
+pyyaml
+rich
+typer[all]
+aiofiles
+httpx
+
+# Document Processing
+pypdf
+python-docx
+beautifulsoup4
+markdown
+chardet
+
+# NLP (Transformers-based)
+transformers
+torch
+sentencepiece
+regex
+
+# 文字列処理
+python-Levenshtein
+
+# LLM & Embeddings
+langchain
+langchain-openai
+langchain-community  # <- この行を追加
+openai
+tiktoken
+
+# Database
+psycopg2-binary
+pgvector
+
+# Clustering
+scikit-learn
+numpy
+pandas
+
+# API
+fastapi
+uvicorn[standard]
+pydantic
+
+# Monitoring
+loguru
