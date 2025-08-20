@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git remote set-url:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(myenv\\Scripts\\pip.exe install:*)",
+      "Bash(./myenv/Scripts/pip.exe install scikit-learn)",
+      "Bash(python:*)",
+      "Bash(myenv/Scripts/python.exe -m pip install:*)",
+      "Bash(myenv/Scripts/python.exe wakachigaki_comparison.py:*)",
+      "Bash(myenv/Scripts/python.exe test_azure_embedding.py:*)",
+      "Bash(myenv/Scripts/python.exe test_legal_text.py:*)",
+      "Bash(myenv/Scripts/python.exe sudachi_custom_tokenizer.py:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "C:\\mnt\\c\\work\\RAG"
+    ]
+  }
+}
