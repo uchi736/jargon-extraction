@@ -80,20 +80,8 @@ python term_extractor_simple.py --input input/document.pdf --output output/dicti
 
 ### Embeddingベースの抽出（改良版）
 ```bash
-# C値・NC値ロジック適用版
-python wakachigaki_eval.py ./input ./output/dictionary.json
-```
-
-### 分かち書き精度比較
-```bash
-# Sudachi + Embedding vs Sudachi + LLM の比較
-python wakachigaki_comparison.py
-
-# 法令文書での比較
-python test_legal_text.py
-
-# カスタムルール適用版
-python sudachi_custom_tokenizer.py
+# C値・NC値ロジック適用版（複合語パターン認識強化）
+python term_extractor_embeding.py ./input ./output/dictionary.json
 ```
 
 ### LangChainを使用した高度な抽出
@@ -115,12 +103,7 @@ Jargon/
 │   └── dictionary.json        # 生成された用語辞書
 ├── main.py                    # メインアプリケーション
 ├── term_extractor_simple.py   # シンプルな用語抽出
-├── term_extractor_embeding.py # Embeddingベースの抽出
-├── wakachigaki_eval.py        # C値・NC値適用版抽出（改良版）
-├── wakachigaki_comparison.py  # 分かち書き手法の比較
-├── sudachi_custom_tokenizer.py # カスタム分かち書きルール
-├── test_legal_text.py         # 法令文書テスト
-├── test_azure_embedding.py    # Azure OpenAI Embeddingテスト
+├── term_extractor_embeding.py # Embeddingベース抽出（C値・NC値統合版）
 ├── term_extractor_lcel.py     # LangChain実装
 ├── debug.py                   # デバッグユーティリティ
 ├── config.yml                 # 設定ファイル

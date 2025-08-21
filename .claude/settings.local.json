@@ -12,7 +12,9 @@
       "Bash(myenv/Scripts/python.exe wakachigaki_comparison.py:*)",
       "Bash(myenv/Scripts/python.exe test_azure_embedding.py:*)",
       "Bash(myenv/Scripts/python.exe test_legal_text.py:*)",
-      "Bash(myenv/Scripts/python.exe sudachi_custom_tokenizer.py:*)"
+      "Bash(myenv/Scripts/python.exe sudachi_custom_tokenizer.py:*)",
+      "Bash(cp:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": [],
