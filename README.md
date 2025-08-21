@@ -6,11 +6,14 @@ Jargonは、PDF、Word、Markdownなどの文書から専門用語を自動的�
 ## 主な機能
 - 📄 複数形式の文書処理（PDF、DOCX、Markdown、HTML、TXT）
 - 🤖 Transformersベースの専門用語抽出
-- 🔍 LLM（OpenAI）を使用した用語定義の自動生成
+- 🔍 LLM（Gemini/GPT）を使用した用語定義の自動生成
 - 📊 用語のクラスタリングと類似度分析
 - 💾 PostgreSQL + pgvectorによるベクトル検索対応
 - 🚀 FastAPIによるREST API提供
 - 📈 リッチなコンソール出力とロギング
+- 🎯 **C値・NC値による複合語重要度計算（新機能）**
+- ⚡ **Sudachi + Embedding/LLMハイブリッド分かち書き（新機能）**
+- 📚 **法令・技術文書特化の用語抽出（新機能）**
 
 ## 必要要件
 - Python 3.8以上
@@ -42,8 +45,25 @@ pip install -r requirements.txt
 ### 4. 環境変数の設定
 `.env`ファイルを作成し、以下の内容を設定：
 ```env
+# OpenAI API（オプション）
 OPENAI_API_KEY=your_openai_api_key_here
+
+# Google Gemini API（必須）
+GOOGLE_API_KEY=your_google_api_key_here
+
+# Azure OpenAI（オプション - Embeddingで使用）
+AZURE_OPENAI_API_KEY=your_azure_key_here
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com
+AZURE_OPENAI_API_VERSION=2024-12-01-preview
+AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME=text-embedding-3-small
+
+# Database（オプション）
 DATABASE_URL=postgresql://user:password@localhost/jargon_db
+
+# LangSmith（オプション - トレース用）
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_API_KEY=your_langsmith_key_here
+LANGCHAIN_PROJECT=term-extraction
 ```
 
 ## 使用方法
@@ -58,14 +78,27 @@ python main.py
 python term_extractor_simple.py --input input/document.pdf --output output/dictionary.json
 ```
 
-### Embeddingベースの抽出
+### Embeddingベースの抽出（改良版）
 ```bash
-python term_extractor_embeding.py --input input/document.pdf
+# C値・NC値ロジック適用版
+python wakachigaki_eval.py ./input ./output/dictionary.json
+```
+
+### 分かち書き精度比較
+```bash
+# Sudachi + Embedding vs Sudachi + LLM の比較
+python wakachigaki_comparison.py
+
+# 法令文書での比較
+python test_legal_text.py
+
+# カスタムルール適用版
+python sudachi_custom_tokenizer.py
 ```
 
 ### LangChainを使用した高度な抽出
 ```bash
-python term_extractor_lcel.py --input input/document.pdf
+python term_extractor_lcel.py ./input ./output/dictionary.json
 ```
 
 ### デバッグモード
@@ -76,18 +109,23 @@ python debug.py
 ## プロジェクト構造
 ```
 Jargon/
-├── input/                  # 入力文書ディレクトリ
-│   └── *.pdf, *.docx      # 処理対象の文書
-├── output/                 # 出力ディレクトリ
-│   └── dictionary.json    # 生成された用語辞書
-├── main.py                # メインアプリケーション
+├── input/                      # 入力文書ディレクトリ
+│   └── *.pdf, *.docx          # 処理対象の文書
+├── output/                     # 出力ディレクトリ
+│   └── dictionary.json        # 生成された用語辞書
+├── main.py                    # メインアプリケーション
 ├── term_extractor_simple.py   # シンプルな用語抽出
 ├── term_extractor_embeding.py # Embeddingベースの抽出
+├── wakachigaki_eval.py        # C値・NC値適用版抽出（改良版）
+├── wakachigaki_comparison.py  # 分かち書き手法の比較
+├── sudachi_custom_tokenizer.py # カスタム分かち書きルール
+├── test_legal_text.py         # 法令文書テスト
+├── test_azure_embedding.py    # Azure OpenAI Embeddingテスト
 ├── term_extractor_lcel.py     # LangChain実装
-├── debug.py               # デバッグユーティリティ
-├── config.yml             # 設定ファイル
-├── requirements.txt       # Python依存パッケージ
-└── README.md             # このファイル
+├── debug.py                   # デバッグユーティリティ
+├── config.yml                 # 設定ファイル
+├── requirements.txt           # Python依存パッケージ
+└── README.md                 # このファイル
 ```
 
 ## 設定
@@ -400,18 +438,33 @@ stateDiagram-v2
 ##### 専門用語抽出アルゴリズム
 1. **統計的手法**
    - TF-IDF（Term Frequency-Inverse Document Frequency）
-   - C-Value/NC-Value
+   - **C-Value/NC-Value（改良実装済み）**
+     - 複合語の統計的重要度を計算
+     - 文脈情報を考慮した重み付け
    - 出現頻度ベースのフィルタリング
 
 2. **言語学的手法**
    - 品詞パターンマッチング（名詞句抽出）
-   - 複合語解析
+   - **複合語解析（強化版）**
+     - SudachiPyのA/B/Cモード活用
+     - 品詞細分類による結合判定
+     - 法令・専門用語パターン辞書
    - 専門用語の形態的特徴抽出
 
 3. **機械学習手法**
    - CRF（Conditional Random Fields）
    - BiLSTM-CRF
    - Transformerベースの系列ラベリング
+   
+4. **ハイブリッド手法（新規実装）**
+   - **Sudachi + Embedding**
+     - 文脈ベクトルによる最適粒度選択
+     - 境界信頼度スコアリング
+     - Azure OpenAI text-embedding-3-small対応
+   - **Sudachi + LLM**
+     - Gemini 2.0による文脈理解
+     - 曖昧性の高い箇所のみLLM判定
+     - 法令文書特化プロンプト
 
 #### LLM統合
 - **OpenAI API**
