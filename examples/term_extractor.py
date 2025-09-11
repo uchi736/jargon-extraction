@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""term_extractor_lcel.py
-LCEL記法版 専門用語・類義語辞書生成（SudachiPy統合版）
+"""term_extractor.py
+専門用語・類義語辞書生成ツール（統合版）
 ------------------------------------------------
 * LangChain Expression Language (LCEL) でチェイン構築
-* SudachiPyとN-gramによる候補語生成の前処理を追加
+* SudachiPyとN-gramによる候補語生成
+* C-value/NC-valueロジックによる複合語抽出
 * LLMは候補の検証と定義付けに特化
 * 構造化出力 (Pydantic) で型安全性確保
-* `.env` から `GOOGLE_API_KEY` 読み込み
 
 Quick Start::
     python -m venv .venv && .venv/Scripts/activate   # ← Windows
@@ -16,7 +16,7 @@ Quick Start::
                  sudachipy sudachidict_core
 
     echo GOOGLE_API_KEY=YOUR_KEY > .env
-    python term_extractor_lcel.py ./input ./output/dictionary.json
+    python term_extractor.py ./input ./output/dictionary.json
 """
 
 from __future__ import annotations
@@ -138,9 +138,9 @@ LOADER_MAP = {
     ".htm": UnstructuredFileLoader,
 }
 
-# ── Candidate Generation Function ─────────────────
+# ── Candidate Generation Function with C-value/NC-value ─────────────────
 def generate_candidates_from_chunk(text: str) -> List[str]:
-    """SudachiPyとN-gramでチャンクから候補語を生成する"""
+    """SudachiPyとN-gramでチャンクから候補語を生成する（C値・複合語ルール適用）"""
     if not text.strip():
         return []
     
@@ -151,16 +151,28 @@ def generate_candidates_from_chunk(text: str) -> List[str]:
         # Mode.Aで分かち書き
         tokens = local_tokenizer.tokenize(text, sudachi_mode)
         
+        # 分かち書き結果をログ出力（デバッグ用）
+        tokenized_text = " | ".join([token.surface() for token in tokens])
+        logger.debug(f"分かち書き結果: {tokenized_text[:200]}...")
+        
+        # トークン情報を詳細に抽出（品詞情報を含む）
+        token_infos = []
+        for i, token in enumerate(tokens):
+            pos_info = token.part_of_speech()
+            token_infos.append({
+                'surface': token.surface(),
+                'position': i,
+                'normalized': token.normalized_form(),
+                'pos': pos_info[0],  # 品詞大分類
+                'pos_detail': pos_info[1] if len(pos_info) > 1 else None,  # 品詞細分類
+                'pos_all': pos_info  # 全品詞情報
+            })
+        
         # 名詞のみを抽出（位置情報も保持）
         noun_tokens = []
-        for i, token in enumerate(tokens):
-            pos = token.part_of_speech()[0]
-            if pos == '名詞':
-                noun_tokens.append({
-                    'surface': token.surface(),
-                    'position': i,
-                    'normalized': token.normalized_form()
-                })
+        for i, token_info in enumerate(token_infos):
+            if token_info['pos'] == '名詞':
+                noun_tokens.append(token_info)
         
         if not noun_tokens:
             return []
@@ -174,7 +186,7 @@ def generate_candidates_from_chunk(text: str) -> List[str]:
             if len(surface) > 1:
                 candidates.add(surface)
         
-        # 連続する名詞をグループ化
+        # 連続する名詞をグループ化（C値・複合語ルール適用）
         noun_groups = []
         current_group = []
         
@@ -183,7 +195,26 @@ def generate_candidates_from_chunk(text: str) -> List[str]:
                 current_group.append(token)
             else:
                 # 前のトークンと連続しているかチェック
-                if token['position'] == current_group[-1]['position'] + 1:
+                prev_token = current_group[-1]
+                
+                # 複合語ルール：品詞細分類で結合判定
+                should_combine = False
+                
+                # 位置が連続している
+                if token['position'] == prev_token['position'] + 1:
+                    # 品詞パターンによる結合判定
+                    # サ変名詞 + サ変名詞
+                    if prev_token.get('pos_detail') == 'サ変可能' and token.get('pos_detail') == 'サ変可能':
+                        should_combine = True
+                    # 普通名詞の連続（専門用語の可能性）
+                    elif prev_token.get('pos_detail') in ['普通名詞', '固有名詞'] and \
+                         token.get('pos_detail') in ['普通名詞', '固有名詞', 'サ変可能']:
+                        should_combine = True
+                    # デフォルトで名詞の連続は結合を検討
+                    else:
+                        should_combine = True
+                
+                if should_combine:
                     current_group.append(token)
                 else:
                     if len(current_group) >= 2:
@@ -194,13 +225,38 @@ def generate_candidates_from_chunk(text: str) -> List[str]:
         if len(current_group) >= 2:
             noun_groups.append(current_group)
         
-        # 各グループから2-gram～4-gramを生成
+        # 各グループから2-gram～4-gramを生成（法令・専門用語パターン優先）
+        # 複合語パターン定義（より積極的に結合）
+        compound_patterns = {
+            "医薬": ["品", "部外品"],
+            "製造": ["管理", "業者", "所", "販売", "工程"],
+            "品質": ["管理", "保証", "システム"],
+            "生物": ["由来", "学的"],
+            "構造": ["設備"],
+            "試験": ["検査"],
+            "安定性": ["モニタリング"],
+        }
+        
         for group in noun_groups:
             surfaces = [t['surface'] for t in group]
-            for n in range(2, min(5, len(surfaces) + 1)):
+            
+            # 特定パターンのチェック（優先的に長い複合語を生成）
+            for i in range(len(surfaces)):
+                # 複合語パターンに基づく結合
+                if surfaces[i] in compound_patterns:
+                    for j in range(i + 1, min(i + 4, len(surfaces))):
+                        if surfaces[j] in compound_patterns.get(surfaces[i], []):
+                            # パターンマッチした場合は優先的に結合
+                            compound = "".join(surfaces[i:j+1])
+                            candidates.add(compound)
+            
+            # 通常のN-gram生成（最大6-gramまで拡張）
+            for n in range(2, min(7, len(surfaces) + 1)):
                 for i in range(len(surfaces) - n + 1):
                     candidate = "".join(surfaces[i:i+n])
-                    candidates.add(candidate)
+                    # 長すぎる複合語は除外（12文字以内）
+                    if len(candidate) <= 12:
+                        candidates.add(candidate)
         
         # 候補リストを長さの降順でソート（長い複合語を優先）
         sorted_candidates = sorted(list(candidates), key=len, reverse=True)
@@ -418,6 +474,6 @@ async def run_pipeline(input_dir: Path, output_json: Path):
 # ── Entry Point ───────────────────────────────────
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        sys.exit("Usage: python term_extractor_lcel.py <input_dir> <output_json>")
+        sys.exit("Usage: python term_extractor.py <input_dir> <output_json>")
     
     asyncio.run(run_pipeline(Path(sys.argv[1]), Path(sys.argv[2])))

@@ -1,0 +1,199 @@
+{
+  "metadata": {
+    "input_file": "C:\\Users\\j2370\\Desktop\\03.pdf",
+    "total_candidates": 30,
+    "evaluated": 30
+  },
+  "results": {
+    "high_confidence": [
+      {
+        "term": "6L28ADF",
+        "perplexity": 40.0,
+        "confidence": "high_confidence",
+        "frequency": 5
+      },
+      {
+        "term": "舶用アンモニアエンジン",
+        "perplexity": 40.0,
+        "confidence": "high_confidence",
+        "frequency": 2
+      },
+      {
+        "term": "株式会社",
+        "perplexity": 40.576277,
+        "confidence": "high_confidence",
+        "frequency": 5
+      }
+    ],
+    "medium_confidence": [],
+    "low_confidence": [
+      {
+        "term": "IMO",
+        "perplexity": 7.9547665,
+        "confidence": "low_confidence",
+        "frequency": 8
+      },
+      {
+        "term": "アンモニア",
+        "perplexity": 10.0,
+        "confidence": "low_confidence",
+        "frequency": 63
+      },
+      {
+        "term": "エンジン",
+        "perplexity": 10.0,
+        "confidence": "low_confidence",
+        "frequency": 37
+      },
+      {
+        "term": "クランクケース",
+        "perplexity": 10.0,
+        "confidence": "low_confidence",
+        "frequency": 7
+      },
+      {
+        "term": "IHI",
+        "perplexity": 10.0,
+        "confidence": "low_confidence",
+        "frequency": 10
+      },
+      {
+        "term": "クランク",
+        "perplexity": 10.0,
+        "confidence": "low_confidence",
+        "frequency": 7
+      },
+      {
+        "term": "ディーゼル",
+        "perplexity": 10.0,
+        "confidence": "low_confidence",
+        "frequency": 5
+      },
+      {
+        "term": "ケース",
+        "perplexity": 20.0,
+        "confidence": "low_confidence",
+        "frequency": 7
+      },
+      {
+        "term": "アンモニア燃料",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 33
+      },
+      {
+        "term": "エンジ",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 1
+      },
+      {
+        "term": "GHG",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 21
+      },
+      {
+        "term": "アンモニア燃料タグボート",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 5
+      },
+      {
+        "term": "アンモニアガス",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 7
+      },
+      {
+        "term": "エリア",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 11
+      },
+      {
+        "term": "削減率",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 12
+      },
+      {
+        "term": "アンモニア燃料レシプロエンジン",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 3
+      },
+      {
+        "term": "アンモニアモード",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 5
+      },
+      {
+        "term": "アンモニア濃度",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 4
+      },
+      {
+        "term": "レシプロエンジン",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 6
+      },
+      {
+        "term": "モード",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 9
+      },
+      {
+        "term": "アンモニア燃料アンモニア輸送",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 2
+      },
+      {
+        "term": "エンジン周囲",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 4
+      },
+      {
+        "term": "タグボート",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 7
+      },
+      {
+        "term": "N2O",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 8
+      },
+      {
+        "term": "タグボート向け",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 2
+      },
+      {
+        "term": "日本海事協会",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 2
+      },
+      {
+        "term": "混焼率",
+        "perplexity": 28.0,
+        "confidence": "low_confidence",
+        "frequency": 9
+      }
+    ]
+  },
+  "summary": {
+    "high_confidence_count": 3,
+    "medium_confidence_count": 0,
+    "low_confidence_count": 27
+  }
+}

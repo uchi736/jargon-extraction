@@ -30,8 +30,16 @@ python-Levenshtein
 langchain
 langchain-openai
 langchain-community  # <- この行を追加
-openai
+langchain-google-genai  # Google Gemini API
+openai>=1.0.0  # Azure OpenAI用
 tiktoken
+
+# Japanese NLP
+sudachipy
+sudachidict-core
+
+# PDF processing
+PyMuPDF
 
 # Database
 psycopg2-binary

@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "input_file": "C:\\Users\\j2370\\Desktop\\03.pdf",
+    "total_candidates": 10,
+    "evaluated": 10
+  },
+  "results": {
+    "high_confidence": [
+      {
+        "term": "アンモニアガス",
+        "perplexity": 12.338143238265427,
+        "confidence": "low_confidence",
+        "frequency": 7
+      },
+      {
+        "term": "クランクケース",
+        "perplexity": 50.0,
+        "confidence": "medium_confidence"
+      }
+    ],
+    "medium_confidence": [
+      {
+        "term": "エリア",
+        "perplexity": 11.604713202618846,
+        "confidence": "low_confidence",
+        "frequency": 11
+      },
+      {
+        "term": "アンモニア燃料タグボート",
+        "perplexity": 11.876235207249398,
+        "confidence": "low_confidence",
+        "frequency": 5
+      }
+    ],
+    "low_confidence": [
+      {
+        "term": "エンジ",
+        "perplexity": 10.000002756146952,
+        "confidence": "low_confidence",
+        "frequency": 1
+      },
+      {
+        "term": "エンジン",
+        "perplexity": 10.000088810925966,
+        "confidence": "low_confidence",
+        "frequency": 37
+      },
+      {
+        "term": "アンモニア燃料",
+        "perplexity": 10.006059178376645,
+        "confidence": "low_confidence",
+        "frequency": 33
+      },
+      {
+        "term": "アンモニア",
+        "perplexity": 10.113815186698595,
+        "confidence": "low_confidence",
+        "frequency": 63
+      },
+      {
+        "term": "GHG",
+        "perplexity": 11.398340275735949,
+        "confidence": "low_confidence",
+        "frequency": 21
+      },
+      {
+        "term": "6L28ADF",
+        "perplexity": 11.596077894013124,
+        "confidence": "low_confidence",
+        "frequency": 5
+      }
+    ]
+  },
+  "summary": {
+    "high_confidence_count": 2,
+    "medium_confidence_count": 2,
+    "low_confidence_count": 6
+  }
+}
