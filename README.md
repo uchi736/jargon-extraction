@@ -70,45 +70,84 @@ LANGCHAIN_PROJECT=term-extraction
 
 ### 基本的な実行
 ```bash
-python main.py
+python src/core/main.py
 ```
 
 ### 文書から専門用語を抽出
 ```bash
-python term_extractor_simple.py --input input/document.pdf --output output/dictionary.json
+python src/core/main_extractor.py --input input/document.pdf --output output/dictionary.json
 ```
 
-### Embeddingベースの抽出（改良版）
+### Perplexityベースの専門用語抽出
 ```bash
-# C値・NC値ロジック適用版（複合語パターン認識強化）
-python term_extractor_embeding.py ./input ./output/dictionary.json
+# 汎用perplexity抽出器
+python src/extraction/generic_perplexity_extractor.py ./input ./output/dictionary.json
 ```
 
-### LangChainを使用した高度な抽出
+### 評価ツールの実行
 ```bash
-python term_extractor_lcel.py ./input ./output/dictionary.json
+# Azure OpenAIによるperplexity計算
+python src/evaluation/azure_perplexity.py
+
+# 入力ログ確率の計算
+python src/evaluation/input_logprobs_calculator.py
 ```
 
-### デバッグモード
+### サンプルコードの実行
 ```bash
-python debug.py
+# 統計的手法による抽出（TF-IDF + 形態素解析）
+python examples/statistical_extractor.py ./input ./output/statistical_terms.json
+
+# LLMのみによる抽出（Gemini-2.0）
+python examples/llm_extractor.py ./input ./output/llm_terms.json
 ```
 
 ## プロジェクト構造
 ```
 Jargon/
-├── input/                      # 入力文書ディレクトリ
-│   └── *.pdf, *.docx          # 処理対象の文書
-├── output/                     # 出力ディレクトリ
-│   └── dictionary.json        # 生成された用語辞書
-├── main.py                    # メインアプリケーション
-├── term_extractor_simple.py   # シンプルな用語抽出
-├── term_extractor_embeding.py # Embeddingベース抽出（C値・NC値統合版）
-├── term_extractor_lcel.py     # LangChain実装
-├── debug.py                   # デバッグユーティリティ
-├── config.yml                 # 設定ファイル
-├── requirements.txt           # Python依存パッケージ
-└── README.md                 # このファイル
+├── src/                       # ソースコード
+│   ├── core/                  # コア機能
+│   │   ├── main.py           # メインアプリケーション
+│   │   └── main_extractor.py # 主要抽出エンジン
+│   ├── evaluation/            # 評価・スコアリング
+│   │   ├── azure_perplexity.py        # Azure OpenAI perplexity計算
+│   │   ├── enhanced_perplexity.py     # 拡張perplexity計算
+│   │   ├── input_logprobs_calculator.py # 入力ログ確率計算
+│   │   └── mask_generator.py          # マスク生成
+│   ├── extraction/            # 抽出アルゴリズム
+│   │   └── generic_perplexity_extractor.py # 汎用perplexity抽出
+│   └── utils/                # ユーティリティ
+│       ├── document_loader.py  # 共通文書ローダー
+│       └── base_extractor.py   # 抽出器基底クラス
+├── tests/                     # テスト関連
+│   └── test_data/            # テストデータ
+│       ├── final_test.json
+│       ├── fixed_results.json
+│       ├── improved_results.json
+│       ├── legal_text_tokenization.json
+│       └── test_output.json
+├── examples/                  # サンプル実装
+│   ├── statistical_extractor.py # 統計的手法による抽出
+│   └── llm_extractor.py        # LLMのみによる抽出
+├── logs/                     # ログファイル
+│   └── term_extraction.log  # 抽出処理ログ
+├── input/                    # 入力文書ディレクトリ
+│   └── *.pdf               # 処理対象のPDF文書
+├── output/                   # 出力ディレクトリ
+│   └── generic_results.json # 生成された抽出結果
+├── docs/                     # ドキュメント
+│   ├── azure_perplexity_detailed.md
+│   ├── evaluation_logic_spec.md
+│   └── FILE_STRUCTURE.md
+├── old/                      # アーカイブ済みコード
+│   └── rag_extractor.py
+├── config.yml               # 設定ファイル
+├── requirements.txt         # Python依存パッケージ
+├── .env                     # 環境変数  
+├── .gitignore              # Git除外設定
+├── logprobs_calculation_logic.md  # ログ確率計算ロジックの説明
+├── 計画書.md                # プロジェクト計画書
+└── README.md               # このファイル
 ```
 
 ## 設定
@@ -155,7 +194,7 @@ flowchart TB
     end
     
     subgraph Parser["🔧 パーサー層"]
-        E[PyPDF]
+        E[PyMuPDF]
         F[python-docx]
         G[Markdown Parser]
         H[BeautifulSoup4]
@@ -399,7 +438,7 @@ stateDiagram-v2
 - **Type Hints**: 静的型チェックによるコード品質向上
 
 #### 文書処理
-- **PyPDF**: PDF文書の解析とテキスト抽出
+- **PyMuPDF**: PDF文書の高速解析とテキスト抽出
   - メタデータ抽出
   - レイアウト保持オプション
 - **python-docx**: Word文書の構造化解析

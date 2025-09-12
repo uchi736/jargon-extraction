@@ -11,7 +11,7 @@ aiofiles
 httpx
 
 # Document Processing
-pypdf
+pymupdf  # PyMuPDF (旧pypdf)
 python-docx
 beautifulsoup4
 markdown
@@ -38,8 +38,6 @@ tiktoken
 sudachipy
 sudachidict-core
 
-# PDF processing
-PyMuPDF
 
 # Database
 psycopg2-binary

@@ -1,45 +1,75 @@
 # ファイル構成説明書
 
-## 整理後のディレクトリ構造
+## 現在のディレクトリ構造
 
 ```
 Jargon/
 ├── src/                        # メインソースコード
 │   ├── core/                   # コアシステム
-│   │   └── main_extractor.py   # 統合型専門用語抽出システム（メイン）
+│   │   ├── main.py             # メインアプリケーション
+│   │   └── main_extractor.py   # 統合型専門用語抽出システム
 │   │
 │   ├── evaluation/             # 評価手法モジュール
-│   │   ├── azure_perplexity.py     # Azure OpenAI logprobs真のPerplexity計算
-│   │   ├── enhanced_perplexity.py  # 強化版Perplexity（ホットスポット検出）
-│   │   └── mask_generator.py       # MASK文脈生成戦略
+│   │   ├── azure_perplexity.py         # Azure OpenAI logprobs真のPerplexity計算
+│   │   ├── enhanced_perplexity.py      # 強化版Perplexity（ホットスポット検出）
+│   │   ├── input_logprobs_calculator.py # 入力ログ確率計算
+│   │   └── mask_generator.py           # MASK文脈生成戦略
 │   │
 │   ├── extraction/             # 抽出手法モジュール
-│   │   └── rag_extractor.py   # RAG統合型抽出（ChromaDB + LCEL）
+│   │   └── generic_perplexity_extractor.py # 汎用perplexity抽出器
 │   │
-│   └── utils/                  # ユーティリティ（今後追加）
+│   └── utils/                  # ユーティリティ
+│       ├── document_loader.py  # 共通文書ローダー
+│       └── base_extractor.py   # 抽出器基底クラス
+│
+├── tests/                      # テスト関連
+│   └── test_data/              # テストデータ
+│       ├── final_test.json
+│       ├── fixed_results.json
+│       ├── improved_results.json
+│       ├── legal_text_tokenization.json
+│       └── test_output.json
 │
 ├── examples/                   # サンプル実装
-│   ├── simple_extractor.py    # シンプル版抽出
-│   ├── lcel_extractor.py      # LCEL記法版
-│   └── embedding_extractor.py # エンベディング版
+│   ├── statistical_extractor.py # 統計的手法による抽出（TF-IDF + 形態素解析）
+│   └── llm_extractor.py        # LLMのみによる抽出（Gemini-2.0）
+│
+├── logs/                       # ログファイル
+│   └── term_extraction.log    # 抽出処理ログ
 │
 ├── docs/                       # ドキュメント
-│   ├── evaluation_logic_spec.md  # 評価ロジック仕様書
-│   └── FILE_STRUCTURE.md        # 本ファイル
+│   ├── azure_perplexity_detailed.md  # Azure Perplexity詳細仕様
+│   ├── evaluation_logic_spec.md      # 評価ロジック仕様書
+│   └── FILE_STRUCTURE.md             # 本ファイル
+│
+├── input/                      # 入力文書ディレクトリ
+│   └── *.pdf                  # 処理対象のPDF文書
 │
 ├── output/                     # 実行結果出力
-│   ├── results.json
-│   ├── review.csv
-│   └── stats.json
+│   └── generic_results.json   # 生成された抽出結果
 │
+├── old/                        # アーカイブ済みコード
+│   └── rag_extractor.py       # 旧RAG統合型抽出（ChromaDB + LCEL）
+│
+├── myenv/                      # Python仮想環境
+├── config.yml                  # 設定ファイル
 ├── requirements.txt            # 依存パッケージ
 ├── .env                        # 環境変数設定
+├── .gitignore                  # Git除外設定
+├── logprobs_calculation_logic.md  # ログ確率計算ロジックの説明
+├── 計画書.md                   # プロジェクト計画書
 └── README.md                   # プロジェクト説明
 ```
 
 ## 各ファイルの役割
 
 ### 🎯 メインシステム（src/core/）
+
+**main.py**
+- PyMuPDFを使用したPDF処理
+- 各種文書フォーマット（PDF、Word、HTML、Markdown）の読み込み
+- 非同期処理による効率化
+
 **main_extractor.py**
 - 本システムの中核
 - 全機能を統合した実行可能ファイル
@@ -57,28 +87,63 @@ Jargon/
 - 段階的チャンク分析（500/100/20トークン）
 - 複数手法の重み付き平均
 
+**input_logprobs_calculator.py**
+- 入力テキストのログ確率計算
+- トークン単位での確率分析
+
 **mask_generator.py**
 - 評価用のMASK文脈生成
 - 4つの生成戦略（実文脈/テンプレート/ドメイン特化/統計的）
 
 ### 🔍 抽出手法（src/extraction/）
 
-**rag_extractor.py**
-- ChromaDB + LangChain LCEL実装
-- ベクトル検索による関連文脈活用
-- Gemini-2.0-flash使用
+**generic_perplexity_extractor.py**
+- 汎用的なperplexityベースの用語抽出
+- 統計的手法による専門用語スコアリング
+- Gemini-2.0使用可能
 
 ### 📝 サンプル実装（examples/）
-過去バージョンや代替実装を保存
-- simple_extractor.py: 基本実装
-- lcel_extractor.py: LCEL記法版
-- embedding_extractor.py: エンベディング重視版
+
+**statistical_extractor.py**
+- 統計的手法による専門用語抽出
+- TF-IDF、C-value、形態素解析を組み合わせ
+- オプションでLLM検証も実行
+
+**llm_extractor.py**
+- LLMのみを使用した専門用語抽出
+- Gemini-2.0による直接抽出
+- 難易度・分野・理由付きの構造化出力
+
+### 📁 その他のディレクトリ
+
+**tests/test_data/**
+- 各種テストデータ（JSON形式）
+- 評価結果やトークン化結果を保存
+
+**logs/**
+- 実行ログの保存先
+- デバッグ情報の記録
+
+**input/**
+- 処理対象文書の配置場所
+- 主にPDF文書を想定
+
+**output/**
+- 抽出結果の出力先
+- JSON形式で結果を保存
+
+**old/**
+- 以前のバージョンのコード
+- 参考実装として保存
 
 ## 実行方法
 
 ### メインシステムの実行
 ```bash
-# Pilotモード（10語のみ、動作確認）
+# 基本実行
+python src/core/main.py
+
+# 専門用語抽出（メインエクストラクタ）
 python src/core/main_extractor.py input.txt --pilot
 
 # 制限モード（上位N語）
@@ -88,16 +153,31 @@ python src/core/main_extractor.py input.txt --limit 50
 python src/core/main_extractor.py input.txt --full
 ```
 
-### 個別モジュールのテスト
+### 評価ツールの実行
 ```bash
 # Azure Perplexityテスト
 python src/evaluation/azure_perplexity.py
 
+# 入力ログ確率計算
+python src/evaluation/input_logprobs_calculator.py
+
 # MASK生成テスト
 python src/evaluation/mask_generator.py
+```
 
-# RAG抽出実行
-python src/extraction/rag_extractor.py ./input ./output/dictionary.json
+### 抽出ツールの実行
+```bash
+# 汎用perplexity抽出
+python src/extraction/generic_perplexity_extractor.py ./input ./output/generic_results.json
+```
+
+### サンプルの実行
+```bash
+# 統計的手法による抽出
+python examples/statistical_extractor.py ./input ./output/statistical_terms.json
+
+# LLMのみによる抽出
+python examples/llm_extractor.py ./input ./output/llm_terms.json
 ```
 
 ## 主要な評価手法の使い分け
@@ -111,20 +191,27 @@ python src/extraction/rag_extractor.py ./input ./output/dictionary.json
 ### 3. 文書全体の難易度分析
 → `enhanced_perplexity.py`のホットスポット検出
 
-### 4. RAGによる文脈考慮が必要な場合
-→ `rag_extractor.py`を単独実行
+### 4. Perplexityベースの抽出
+→ `generic_perplexity_extractor.py`を使用
 
 ## 環境設定（.env）
 
 ```env
+# OpenAI API（オプション）
+OPENAI_API_KEY=your_openai_api_key_here
+
 # Google API（Gemini用）
-GOOGLE_API_KEY=your_key
+GOOGLE_API_KEY=your_google_api_key_here
 
 # Azure OpenAI（GPT-4o用）
 AZURE_OPENAI_API_KEY=your_key
 AZURE_OPENAI_ENDPOINT=your_endpoint
 AZURE_OPENAI_API_VERSION=2024-12-01-preview
 AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o
+AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME=text-embedding-3-small
+
+# Database（オプション）
+DATABASE_URL=postgresql://user:password@localhost/jargon_db
 
 # LangSmith（オプション）
 LANGCHAIN_TRACING_V2=true
@@ -132,16 +219,14 @@ LANGCHAIN_API_KEY=your_key
 LANGCHAIN_PROJECT=term-extraction
 ```
 
-## 出力ファイル
+## 依存関係
 
-**output/results.json**
-- 3段階分類結果（高/中/低確信度）
-- メタデータ（処理時間、候補数）
+主要なパッケージ：
+- PyMuPDF: PDF処理
+- transformers: 自然言語処理
+- langchain: LLM統合
+- sudachipy: 日本語形態素解析
+- scikit-learn: 機械学習・クラスタリング
+- fastapi: REST API
 
-**output/review.csv**
-- 人手確認用リスト
-- 優先度順にソート
-
-**output/stats.json**
-- 処理統計
-- 自動承認率/要確認率
+詳細は`requirements.txt`を参照。

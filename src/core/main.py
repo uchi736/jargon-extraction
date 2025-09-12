@@ -28,7 +28,7 @@ import aiofiles
 
 # ドキュメント処理
 from unstructured.partition.auto import partition
-from pypdf import PdfReader
+import pymupdf  # PyMuPDF
 import docx
 from bs4 import BeautifulSoup
 import markdown
@@ -227,17 +227,31 @@ class DocLoader:
 
     @staticmethod
     async def _load_pdf(file_path: Path) -> str:
+        """PyMuPDFを使用してPDFを読込（unstructuredフォールバック付き）"""
         try:
-            elements = partition(filename=str(file_path))
-            return "\n\n".join([el.text for el in elements if hasattr(el, 'text')])
-        except Exception:
-            logger.warning(f"unstructuredでのPDF読込失敗。pypdfで再試行します。")
+            # PyMuPDFでPDFを開く
+            doc = pymupdf.open(str(file_path))
+            text_parts = []
+            for page_num, page in enumerate(doc, start=1):
+                text = page.get_text()
+                if text.strip():
+                    text_parts.append(text)
+            doc.close()
+            
+            if text_parts:
+                return "\n\n".join(text_parts)
+            else:
+                # テキストが取得できない場合はunstructuredで試す
+                logger.warning(f"PyMuPDFでテキスト取得できず。unstructuredで再試行します。")
+                elements = partition(filename=str(file_path))
+                return "\n\n".join([el.text for el in elements if hasattr(el, 'text')])
+        except Exception as e:
+            logger.warning(f"PyMuPDFでのPDF読込失敗: {e}。unstructuredで再試行します。")
             try:
-                with open(file_path, "rb") as f:
-                    reader = PdfReader(f)
-                    return "\n\n".join([page.extract_text() or "" for page in reader.pages])
-            except Exception as e:
-                logger.error(f"PDF読み込み完全失敗: {e}")
+                elements = partition(filename=str(file_path))
+                return "\n\n".join([el.text for el in elements if hasattr(el, 'text')])
+            except Exception as e2:
+                logger.error(f"PDF読み込み完全失敗: {e2}")
                 return ""
 
     @staticmethod

@@ -35,12 +35,23 @@
       "Read(/C:\\work\\RAG\\Jargon\\src\\extraction/**)",
       "Read(/C:\\work\\RAG\\Jargon\\src\\core/**)",
       "Read(/C:\\work\\RAG\\Jargon\\src\\evaluation/**)",
-      "Read(/C:\\work\\RAG\\Jargon\\src\\core/**)"
+      "Read(/C:\\work\\RAG\\Jargon\\src\\core/**)",
+      "Bash(tree:*)",
+      "Bash(for dir in src src/core src/evaluation src/extraction src/utils tests tests/test_data examples logs input output docs old)",
+      "Bash(do echo \"=== $dir ===\")",
+      "Bash(ls:*)",
+      "Bash(done)",
+      "Bash(awk:*)"
     ],
     "deny": [],
     "ask": [],
     "additionalDirectories": [
       "C:\\mnt\\c\\work\\RAG"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "context7",
+    "sequential-thinking",
+    "serena"
+  ]
 }
