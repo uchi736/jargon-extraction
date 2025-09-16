@@ -42,7 +42,8 @@
       "Bash(ls:*)",
       "Bash(done)",
       "Bash(awk:*)",
-      "mcp__serena__search_for_pattern"
+      "mcp__serena__search_for_pattern",
+      "mcp__serena__activate_project"
     ],
     "deny": [],
     "ask": [],
