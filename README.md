@@ -100,6 +100,9 @@ python examples/statistical_extractor.py ./input ./output/statistical_terms.json
 
 # LLMのみによる抽出（Gemini-2.0）
 python examples/llm_extractor.py ./input ./output/llm_terms.json
+
+# 改良版LLM抽出（より高度な検証機能付き）
+python examples/llm_extractor_v2.py ./input ./output/llm_terms_v2.json
 ```
 
 ## プロジェクト構造
@@ -119,16 +122,11 @@ Jargon/
 │   └── utils/                # ユーティリティ
 │       ├── document_loader.py  # 共通文書ローダー
 │       └── base_extractor.py   # 抽出器基底クラス
-├── tests/                     # テスト関連
-│   └── test_data/            # テストデータ
-│       ├── final_test.json
-│       ├── fixed_results.json
-│       ├── improved_results.json
-│       ├── legal_text_tokenization.json
-│       └── test_output.json
+├── tests/                     # テスト関連（現在は削除済み）
 ├── examples/                  # サンプル実装
-│   ├── statistical_extractor.py # 統計的手法による抽出
-│   └── llm_extractor.py        # LLMのみによる抽出
+│   ├── statistical_extractor.py  # 統計的手法による抽出
+│   ├── llm_extractor.py         # LLMのみによる抽出
+│   └── llm_extractor_v2.py      # 改良版LLM抽出
 ├── logs/                     # ログファイル
 │   └── term_extraction.log  # 抽出処理ログ
 ├── input/                    # 入力文書ディレクトリ
@@ -138,14 +136,17 @@ Jargon/
 ├── docs/                     # ドキュメント
 │   ├── azure_perplexity_detailed.md
 │   ├── evaluation_logic_spec.md
-│   └── FILE_STRUCTURE.md
+│   ├── FILE_STRUCTURE.md
+│   └── logprobs_calculation_logic.md  # ログ確率計算ロジックの説明
 ├── old/                      # アーカイブ済みコード
 │   └── rag_extractor.py
 ├── config.yml               # 設定ファイル
 ├── requirements.txt         # Python依存パッケージ
 ├── .env                     # 環境変数  
 ├── .gitignore              # Git除外設定
-├── logprobs_calculation_logic.md  # ログ確率計算ロジックの説明
+├── .serena/                # Serenaプロジェクト設定（インデックス化済み）
+│   └── cache/              # シンボルキャッシュ
+├── preprocessed/           # 前処理済みファイル保存場所
 ├── 計画書.md                # プロジェクト計画書
 └── README.md               # このファイル
 ```
@@ -169,7 +170,8 @@ FastAPIサーバーを起動後、以下のエンドポイントが利用可能�
 
 ### テストの実行
 ```bash
-pytest tests/
+# 現在テストディレクトリは整理中です
+# 各モジュールは個別に実行してテストできます
 ```
 
 ### コードフォーマット
