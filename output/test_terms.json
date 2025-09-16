@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "extraction_date": "2025-09-13",
+    "extractor": "LLMTermExtractor"
+  },
+  "results": [
+    {
+      "file_path": "test.pdf",
+      "terms": [
+        {
+          "term": "マイクロパイロット方式",
+          "definition": "少量の燃料噴射で着火を促すガスエンジンの着火方式。アンモニアのような着火しにくい燃料に適用される技術。",
+          "score": 0.8
+        },
+        {
+          "term": "カーボンニュートラル",
+          "definition": "温室効果ガスの排出量と吸収量を均衡させる状態。",
+          "score": 0.7
+        },
+        {
+          "term": "API",
+          "definition": "アプリケーションプログラミングインターフェース。ソフトウェア間の通信規約。",
+          "score": 0.6
+        }
+      ]
+    }
+  ]
+}

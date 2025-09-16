@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "evaluation_date": "2025-09-13T10:34:14.015619",
+    "total_terms": 30,
+    "similarity_threshold": 0.6,
+    "llm_model": "gemini-1.5-flash",
+    "embedding_model": "text-embedding-3-small"
+  },
+  "summary": {
+    "true_unknown_count": 11,
+    "known_count": 19,
+    "error_count": 0
+  },
+  "true_unknown_terms": [
+    {
+      "term": "マイクロパイロット方式",
+      "original_definition": "少量の燃料噴射で着火を促すガスエンジンの着火方式。",
+      "context_free_definition": "マイクロパイロット方式とは、パイロットプラントを用いて、化学プロセスや製造プロセスの最適化やスケールアップを行う手法です。小規模な実験設備で実プロセスを模倣し、データを取得することで、大規模プラントでの運用前に問題点を洗い出し、効率や安全性を向上させることを目的としています。",
+      "similarity": 0.26196138113666995,
+      "is_unknown": 

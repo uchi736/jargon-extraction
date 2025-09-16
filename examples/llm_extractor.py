@@ -20,9 +20,10 @@ from pydantic import BaseModel, Field
 from rich.console import Console
 
 # LangChain imports
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
+import os
 
 load_dotenv()
 console = Console()
@@ -31,10 +32,10 @@ console = Console()
 class LLMTerm(BaseModel):
     """LLM用の専門用語モデル"""
     term: str = Field(description="専門用語")
-    definition: str = Field(description="用語の定義")
+    definition: str = Field(description="用語の詳細な定義（30-50語程度）")
     difficulty: int = Field(description="難易度（1-10）", ge=1, le=10)
     field: str = Field(description="分野")
-    reasoning: str = Field(description="専門用語として選んだ理由")
+    reasoning: str = Field(description="専門用語として選んだ理由（50文字以内）")
 
 
 class LLMTermExtractionResult(BaseModel):
@@ -45,21 +46,24 @@ class LLMTermExtractionResult(BaseModel):
 class LLMTermExtractor(BaseTermExtractor):
     """LLMのみを使用した専門用語抽出器"""
     
-    def __init__(self, model_name: str = "gemini-2.0-flash-exp", max_terms: int = 30):
+    def __init__(self, deployment_name: str = "gpt-4.1-mini", max_terms: int = 30):
         """
         初期化
         
         Args:
-            model_name: 使用するLLMモデル
+            deployment_name: Azure OpenAIデプロイメント名
             max_terms: 抽出する最大用語数
         """
         super().__init__(chunk_size=4000, chunk_overlap=400)
         
         self.max_terms = max_terms
         
-        # LLM設定
-        self.llm = ChatGoogleGenerativeAI(
-            model=model_name,
+        # Azure OpenAI LLM設定
+        self.llm = AzureChatOpenAI(
+            deployment_name=deployment_name,
+            api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+            api_version=os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview"),
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
             temperature=0.1,
             max_tokens=4096
         )
@@ -79,8 +83,13 @@ class LLMTermExtractor(BaseTermExtractor):
 抽出基準：
 - 一般的すぎる単語（「データ」「情報」「システム」など）は除外
 - 複合語や専門的な略語を優先的に抽出
-- 各用語に明確で簡潔な定義を付与（50文字以内）
-- なぜそれが専門用語なのか理由を簡潔に説明（30文字以内）
+- 各用語に詳細で学術的な定義を付与（30-50語程度）
+  定義には以下を含める：
+  * 用語の本質的な意味と機能
+  * 具体的な用途や応用例
+  * 関連する概念や技術との関係性
+  * 必要に応じて動作原理や特徴
+- なぜそれが専門用語なのか理由を明確に説明（50文字以内）
 
 {format_instructions}"""),
             ("human", """以下のテキストから専門用語を抽出してください。
