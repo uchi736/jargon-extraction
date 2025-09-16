@@ -41,7 +41,8 @@
       "Bash(do echo \"=== $dir ===\")",
       "Bash(ls:*)",
       "Bash(done)",
-      "Bash(awk:*)"
+      "Bash(awk:*)",
+      "mcp__serena__search_for_pattern"
     ],
     "deny": [],
     "ask": [],

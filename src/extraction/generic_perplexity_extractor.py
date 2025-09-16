@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 # Azure OpenAI設定確認
 AZURE_KEY = os.getenv("AZURE_OPENAI_API_KEY") or os.getenv("AZURE_OPENAI_KEY")
 AZURE_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
-AZURE_DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4o")
+AZURE_DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4.1-mini")
 
 if not AZURE_KEY or not AZURE_ENDPOINT:
     logger.error("Azure OpenAI設定が不足しています。.envファイルを確認してください。")

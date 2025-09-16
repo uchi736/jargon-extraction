@@ -25,7 +25,7 @@ class AzureLogprobsPerplexityCalculator:
             api_version="2024-12-01-preview",
             azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
         )
-        self.deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4o")
+        self.deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4.1-mini")
         
     async def calculate_true_perplexity(self, text: str, term: str) -> Dict:
         """

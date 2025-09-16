@@ -63,15 +63,27 @@ class TermExtractor:
         self.tokenizer_obj = dictionary.Dictionary().create()
         self.mode = tokenizer.Tokenizer.SplitMode.A  # 短単位（より細かい分割）
         
-    def extract_candidates(self, text: str) -> List[Dict]:
-        """テキストから専門用語候補を抽出"""
+    def extract_candidates(self, text: str, debug_output: bool = False) -> List[Dict]:
+        """テキストから専門用語候補を抽出
+
+        Args:
+            text: 入力テキスト
+            debug_output: 分かち書きとn-gram状態を出力するかどうか
+        """
         if not text.strip():
             return []
-            
+
         try:
             # 1. 形態素解析
             tokens = self.tokenizer_obj.tokenize(text, self.mode)
-            
+
+            # デバッグ出力: 分かち書き結果
+            if debug_output:
+                tokenized_words = [token.surface() for token in tokens]
+                logger.info("\n=== 分かち書き結果 ===")
+                logger.info(f"総トークン数: {len(tokenized_words)}")
+                logger.info(f"最初の50トークン: {' | '.join(tokenized_words[:50])}")
+
             # 2. 名詞のみを抽出
             nouns = []
             for token in tokens:
@@ -85,31 +97,68 @@ class TermExtractor:
                         'pos_detail': token.part_of_speech()
                     })
             
+            # デバッグ出力: 抽出された名詞
+            if debug_output:
+                noun_surfaces = [noun['surface'] for noun in nouns]
+                logger.info("\n=== 抽出された名詞 ===")
+                logger.info(f"総名詞数: {len(noun_surfaces)}")
+                logger.info(f"最初の30名詞: {' | '.join(noun_surfaces[:30])}")
+
             # 3. 複合名詞の生成（改良版）
             candidates = set()
-            
+            unigrams = set()  # 1-gram
+            bigrams = set()   # 2-gram
+            trigrams = set()  # 3-gram
+
             # 単体名詞（2文字以上の意味のある名詞）
             for noun in nouns:
                 surface = noun['surface']
                 pos_detail = noun['pos_detail']
-                
+
                 # デバッグ用ログ
-                if len(candidates) < 5:
+                if debug_output and len(candidates) < 5:
                     logger.debug(f"名詞チェック: {surface} - {pos_detail[:3]}")
-                
+
                 # 名詞の条件を緩和
-                if (len(surface) >= 2 and 
+                if (len(surface) >= 2 and
                     pos_detail[0] == '名詞' and
                     not surface.isdigit() and
                     surface not in ['こと', 'もの', 'ため', 'など']):  # 機能語は除外
                     candidates.add(surface)
-            
+                    unigrams.add(surface)
+
             # 複合名詞（隣接する名詞の結合）
-            self._add_compound_nouns(nouns, candidates)
+            if debug_output:
+                logger.info("\n=== N-gram生成処理 ===")
+            self._add_compound_nouns(nouns, candidates, debug_output, bigrams, trigrams)
             
+            # デバッグ出力: N-gram統計
+            if debug_output:
+                logger.info("\n=== N-gram統計 ===")
+                logger.info(f"1-gram（単体名詞）: {len(unigrams)}個")
+                logger.info(f"2-gram（2語複合）: {len(bigrams)}個")
+                logger.info(f"3-gram（3語複合）: {len(trigrams)}個")
+                logger.info(f"全候補数（フィルタ前）: {len(candidates)}個")
+
+                if unigrams:
+                    logger.info(f"\n1-gram例（最初の10個）: {' | '.join(list(unigrams)[:10])}")
+                if bigrams:
+                    logger.info(f"2-gram例（最初の10個）: {' | '.join(list(bigrams)[:10])}")
+                if trigrams:
+                    logger.info(f"3-gram例（最初の10個）: {' | '.join(list(trigrams)[:10])}")
+
             # 4. 部分文字列候補を除去
             filtered_candidates = self._filter_substring_candidates(candidates)
-            
+
+            # デバッグ出力: フィルタリング結果
+            if debug_output:
+                logger.info(f"\n=== フィルタリング結果 ===")
+                logger.info(f"フィルタ前: {len(candidates)}個 → フィルタ後: {len(filtered_candidates)}個")
+                removed_count = len(candidates) - len(filtered_candidates)
+                if removed_count > 0:
+                    removed_examples = list(candidates - filtered_candidates)[:5]
+                    logger.info(f"除去された候補例: {' | '.join(removed_examples)}")
+
             # 5. 候補リストを辞書形式で返す
             result = []
             for candidate in filtered_candidates:
@@ -125,29 +174,47 @@ class TermExtractor:
             logger.error(f"候補抽出エラー: {e}")
             return []
     
-    def _add_compound_nouns(self, nouns: List[Dict], candidates: set):
+    def _add_compound_nouns(self, nouns: List[Dict], candidates: set, debug_output: bool = False,
+                           bigrams: set = None, trigrams: set = None):
         """隣接する名詞から複合語を生成"""
         if len(nouns) < 2:
             return
-        
+
         i = 0
+        generated_ngrams = []
+
         while i < len(nouns) - 1:
             compound_parts = [nouns[i]]
             j = i + 1
-            
+
             # 連続する名詞を収集
             while j < len(nouns) and self._should_combine(nouns[j-1], nouns[j]):
                 compound_parts.append(nouns[j])
                 j += 1
-            
+
             # 2語以上の複合語を生成
             if len(compound_parts) >= 2:
                 for k in range(2, min(len(compound_parts) + 1, 4)):  # 最大3語まで
                     compound = "".join([part['surface'] for part in compound_parts[:k]])
                     if len(compound) >= 3 and len(compound) <= 20:  # 適切な長さ
                         candidates.add(compound)
-            
+
+                        # n-gramとして分類
+                        if k == 2 and bigrams is not None:
+                            bigrams.add(compound)
+                            if debug_output:
+                                generated_ngrams.append(f"2-gram: {compound}")
+                        elif k == 3 and trigrams is not None:
+                            trigrams.add(compound)
+                            if debug_output:
+                                generated_ngrams.append(f"3-gram: {compound}")
+
             i = j if j > i + 1 else i + 1
+
+        if debug_output and generated_ngrams:
+            logger.info(f"生成されたN-gram例（最初の10個）:")
+            for ngram in generated_ngrams[:10]:
+                logger.info(f"  {ngram}")
     
     def _should_combine(self, prev_noun: Dict, curr_noun: Dict) -> bool:
         """2つの名詞が結合すべきかを判定"""
@@ -336,23 +403,23 @@ class LLMEvaluator:
             api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
             azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
         )
-        self.deployment = "gpt-4o"  # デプロイメント名
+        self.deployment = "gpt-4.1-mini"  # デプロイメント名
         
-        # Geminiも保持（比較用）
-        self.llm = ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash",
-            temperature=0.0,
-            google_api_key=API_KEY,
-        )
-        
+        # Geminiも保持（比較用） - クォータ制限のためコメントアウト
+        # self.llm = ChatGoogleGenerativeAI(
+        #     model="gemini-2.0-flash",
+        #     temperature=0.0,
+        #     google_api_key=API_KEY,
+        # )
+
         # 評価用プロンプト
         self.definition_prompt = ChatPromptTemplate.from_messages([
             ("system", "あなたは専門用語の定義を生成する専門家です。与えられた用語について、正確で簡潔な定義を30-50文字で回答してください。"),
             ("user", "{term}とは何か説明してください。")
         ])
-        
-        # チェイン作成
-        self.definition_chain = self.definition_prompt | self.llm | StrOutputParser()
+
+        # チェイン作成 - Azure OpenAIを使用するように変更が必要
+        # self.definition_chain = self.definition_prompt | self.llm | StrOutputParser()
     
     async def calculate_perplexity_batch(self, terms: List[str]) -> Dict[str, float]:
         """バッチで真のPerplexity値を計算（Azure OpenAI使用）"""
@@ -1000,7 +1067,8 @@ class JargonExtractor:
         
         # 2. 専門用語候補抽出
         logger.info("専門用語候補を抽出中...")
-        candidates = self.term_extractor.extract_candidates(text)
+        # デバッグ出力を有効にして分かち書きとN-gram状態を表示
+        candidates = self.term_extractor.extract_candidates(text, debug_output=True)
         
         if not candidates:
             logger.error("候補が見つかりませんでした")
