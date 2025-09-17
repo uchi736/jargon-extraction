@@ -143,24 +143,28 @@ class StatisticalTermExtractor(BaseTermExtractor):
         
         # 2. TF-IDFスコアを計算
         tfidf_scores = self._calculate_tfidf(text, list(candidates.keys()))
-        
+
         # 3. 複合語スコア（C-value）を計算
         cvalue_scores = self._calculate_cvalue(candidates)
-        
-        # 4. 統合スコアを計算
+
+        # 4. スコアを正規化
+        tfidf_normalized = self._normalize_scores(tfidf_scores)
+        cvalue_normalized = self._normalize_scores(cvalue_scores)
+
+        # 5. 統合スコアを計算
         terms = []
         filtered_count = 0
         for term, frequency in candidates.items():
             if frequency < self.min_frequency:
                 filtered_count += 1
                 continue
-            
-            # スコア統合
-            tfidf = tfidf_scores.get(term, 0.0)
-            cvalue = cvalue_scores.get(term, 0.0)
-            
-            # 重み付き平均（C値を強く重視）
-            score = (tfidf * 0.2 + cvalue * 0.8)  # C値をさらに重視
+
+            # 正規化済みスコアを使用
+            tfidf = tfidf_normalized.get(term, 0.0)
+            cvalue = cvalue_normalized.get(term, 0.0)
+
+            # 重み付き平均（正規化済みなので公平に評価可能）
+            score = (tfidf * 0.3 + cvalue * 0.7)  # C値を重視しつつバランスを改善
             
             # 文脈を抽出
             contexts = self._extract_contexts(text, term)
@@ -171,7 +175,12 @@ class StatisticalTermExtractor(BaseTermExtractor):
                 score=score,
                 frequency=frequency,
                 contexts=contexts,
-                metadata={"tfidf": tfidf, "cvalue": cvalue}
+                metadata={
+                    "tfidf_raw": tfidf_scores.get(term, 0.0),
+                    "cvalue_raw": cvalue_scores.get(term, 0.0),
+                    "tfidf_norm": tfidf,
+                    "cvalue_norm": cvalue
+                }
             ))
         
         # スコアでソート
@@ -188,19 +197,23 @@ class StatisticalTermExtractor(BaseTermExtractor):
 
         # デバッグ: スコア上位を表示
         if len(terms) > 0:
-            console.print("  [dim]スコア上位10件 (TF-IDF + C-value):[/dim]")
+            console.print("  [dim]スコア上位10件 (正規化後):[/dim]")
             for i, term in enumerate(terms[:10]):
-                tfidf = term.metadata.get('tfidf', 0)
-                cvalue = term.metadata.get('cvalue', 0)
-                console.print(f"    {i+1}. {term.term}: スコア={term.score:.3f} (TF-IDF={tfidf:.3f}, C-val={cvalue:.3f}, 頻度={term.frequency})")
-        
-        # 5. LLM検証（オプション）
+                tfidf_norm = term.metadata.get('tfidf_norm', 0)
+                cvalue_norm = term.metadata.get('cvalue_norm', 0)
+                console.print(f"    {i+1}. {term.term}: スコア={term.score:.3f} (TF-IDF={tfidf_norm:.3f}, C-val={cvalue_norm:.3f}, 頻度={term.frequency})")
+
+        # 6. スコア分布から検証数を決定
+        validation_count = self._determine_validation_count_by_distribution(terms)
+
+        # 7. LLM検証（オプション）
         if self.use_llm_validation and terms:
-            console.print(f"  [cyan]LLM検証対象: 上位{min(50, len(terms))}件[/cyan]")
-            terms = await self._validate_with_llm(terms[:50], text)  # 上位50件を検証
+            console.print(f"  [cyan]LLM検証対象: 上位{validation_count}件（スコア分布から決定）[/cyan]")
+            terms = await self._validate_with_llm(terms[:validation_count], text)
             console.print(f"  [yellow]LLM検証後の候補数: {len(terms)}[/yellow]")
 
-        final_terms = terms[:50]  # 上位50件を返す
+        # 最終結果を返す（検証数または50件の小さい方）
+        final_terms = terms[:min(validation_count, 50)]
         console.print(f"  [green]最終的な専門用語数: {len(final_terms)}[/green]")
         return final_terms
     
@@ -365,6 +378,33 @@ class StatisticalTermExtractor(BaseTermExtractor):
                 return False
 
         return True
+
+    def _normalize_scores(self, scores: Dict[str, float]) -> Dict[str, float]:
+        """
+        Min-Max正規化でスコアを0-1の範囲に変換
+
+        Args:
+            scores: 正規化前のスコア辞書
+
+        Returns:
+            正規化後のスコア辞書（0-1の範囲）
+        """
+        if not scores:
+            return {}
+
+        values = list(scores.values())
+        min_val = min(values)
+        max_val = max(values)
+
+        # 全て同じ値の場合
+        if max_val == min_val:
+            return {k: 0.5 for k in scores}
+
+        # Min-Max正規化
+        return {
+            k: (v - min_val) / (max_val - min_val)
+            for k, v in scores.items()
+        }
     
     def _calculate_tfidf(self, text: str, terms: List[str]) -> Dict[str, float]:
         """
@@ -446,10 +486,6 @@ class StatisticalTermExtractor(BaseTermExtractor):
                 max_score = max(tf_idf_scores) if tf_idf_scores else 0
                 scores[term] = float(max_score)
 
-            # スコアを正規化（0-1の範囲に）
-            max_overall = max(scores.values()) if scores else 1
-            if max_overall > 0:
-                scores = {k: v / max_overall for k, v in scores.items()}
 
             # デバッグ: ゼロのTF-IDFを持つ用語を表示
             zero_terms = [term for term, score in scores.items() if score == 0]
@@ -563,9 +599,9 @@ class StatisticalTermExtractor(BaseTermExtractor):
                 cvalue = math.log2(length + 1) * (frequency - contained_count / containing_terms)
             else:
                 cvalue = math.log2(length + 1) * frequency
-            
-            # 正規化（0-1の範囲に）
-            cvalues[term] = max(0, cvalue / 100)  # 100で割って正規化
+
+            # 負の値は0にクリップ（生のスコアを保持）
+            cvalues[term] = max(0, cvalue)
         
         return cvalues
 
@@ -617,6 +653,71 @@ class StatisticalTermExtractor(BaseTermExtractor):
         terms = self._prioritize_compound_terms(terms)
 
         return terms
+
+    def _determine_validation_count_by_distribution(
+        self,
+        terms: List[Term],
+        min_count: int = 20,
+        max_count: int = 100
+    ) -> int:
+        """
+        スコア分布から適切な検証数を決定（エルボー法）
+
+        Args:
+            terms: スコア計算済みの用語リスト
+            min_count: 最小検証数
+            max_count: 最大検証数
+
+        Returns:
+            適切な検証数
+        """
+        if len(terms) <= min_count:
+            return len(terms)
+
+        scores = [t.score for t in terms]
+
+        # 方法1: 急激な下降点を検出（エルボー法）
+        score_diffs = []
+        for i in range(1, min(len(scores) - 1, max_count)):
+            # 変化率を計算
+            if scores[i] > 0:
+                change_rate = (scores[i-1] - scores[i]) / scores[i]
+                score_diffs.append((i, change_rate))
+
+        elbow_point = min_count
+        if score_diffs:
+            # 最大変化率の位置を見つける
+            max_change_idx, max_change_rate = max(score_diffs, key=lambda x: x[1])
+
+            # 変化率が平均の2倍以上の場合、そこをエルボーポイントとする
+            avg_change_rate = np.mean([x[1] for x in score_diffs])
+            if max_change_rate > avg_change_rate * 2:
+                elbow_point = max_change_idx
+                # バッファを追加（エルボーポイントの少し先まで）
+                elbow_point = min(int(elbow_point * 1.2), max_count)
+
+        # 方法2: 累積寄与率で決定
+        cumulative_score = 0
+        total_score = sum(scores[:max_count])
+        threshold = 0.8  # 上位80%の寄与率
+
+        contribution_point = max_count
+        for i, score in enumerate(scores[:max_count]):
+            cumulative_score += score
+            if cumulative_score >= total_score * threshold:
+                contribution_point = i + 1
+                break
+
+        # 2つの方法の小さい方を採用（より保守的）
+        validation_count = min(elbow_point, contribution_point)
+
+        # 最小値と最大値でクリップ
+        validation_count = max(min_count, min(validation_count, len(terms), max_count))
+
+        # デバッグ情報
+        console.print(f"  [dim]検証数決定: エルボー法={elbow_point}, 累積寄与率法={contribution_point} → {validation_count}件[/dim]")
+
+        return validation_count
 
     def _prioritize_compound_terms(self, terms: List[Term]) -> List[Term]:
         """
